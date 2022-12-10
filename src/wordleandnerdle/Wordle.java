@@ -17,6 +17,7 @@ public class Wordle extends javax.swing.JFrame {
      * Creates new form Wordle
      */
     public Wordle() {
+        setTitle("Wordle");
         initComponents();
         init_arr();
     }
@@ -31,7 +32,7 @@ public class Wordle extends javax.swing.JFrame {
             {
                 pnlarr[i][j] = new javax.swing.JPanel();
                 add(pnlarr[i][j]);
-                pnlarr[i][j].setBounds(5 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
+                pnlarr[i][j].setBounds(55 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
             }
         }
     }
