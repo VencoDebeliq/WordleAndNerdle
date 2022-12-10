@@ -4,17 +4,36 @@
  */
 package wordleandnerdle;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author mac
  */
 public class Wordle extends javax.swing.JFrame {
-
+    private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
     /**
      * Creates new form Wordle
      */
     public Wordle() {
         initComponents();
+        init_arr();
+    }
+    
+    private void init_arr() // initializing panel array
+    {
+        int n = 5;
+        int m = 6;
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                pnlarr[i][j] = new javax.swing.JPanel();
+                add(pnlarr[i][j]);
+                pnlarr[i][j].setBounds(5 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
+            }
+        }
     }
 
     /**
@@ -67,11 +86,11 @@ public class Wordle extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 439, Short.MAX_VALUE)
         );
 
         btnQ.setText("Q");
@@ -135,6 +154,11 @@ public class Wordle extends javax.swing.JFrame {
         btnV.setText("V");
 
         btnDEL.setText("⌫");
+        btnDEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDELActionPerformed(evt);
+            }
+        });
 
         btnM.setText("M");
 
@@ -172,7 +196,7 @@ public class Wordle extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnENT, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(btnENT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -210,7 +234,7 @@ public class Wordle extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(btnDEL, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                            .addComponent(btnDEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -258,7 +282,10 @@ public class Wordle extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,12 +310,24 @@ public class Wordle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSActionPerformed
+
+    private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 6; ++j)
+            {
+                Graphics g = pnlarr[i][j].getGraphics();
+                pnlarr[i][j].setBackground(Color.RED);
+            }
+        }
+        // this is test !
+    }//GEN-LAST:event_btnDELActionPerformed
 
     public static void Run() {
         /* Set the Nimbus look and feel */
