@@ -4,8 +4,7 @@
  */
 package wordleandnerdle;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 /**
  *
@@ -13,13 +12,39 @@ import java.awt.Graphics;
  */
 public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
+    private int curri;
+    private int currj;
     /**
      * Creates new form Wordle
      */
+    private void setJ(int currj)
+    {
+        if (currj < 0) return;
+        if (currj < 6)
+            this.currj = currj;
+        else
+            throw new RuntimeException("Out of bounds");
+    }
+    
+    private void setI(int curri)
+    {
+        if (curri < 0) return ;
+        if (curri < 5)
+            this.curri = curri;
+        else
+        {
+            this.curri = 0;
+            setJ(currj + 1);
+        }
+            
+    }
+    
     public Wordle() {
         setTitle("Wordle");
         initComponents();
         init_arr();
+        setI(0);
+        setJ(0);
     }
     
     private void init_arr() // initializing panel array
@@ -312,7 +337,14 @@ public class Wordle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
-        
+        Graphics g = pnlarr[curri][currj].getGraphics();
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("Y");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
