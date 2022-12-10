@@ -49,6 +49,9 @@ public class Wordle extends javax.swing.JFrame {
     
     private void init_arr() // initializing panel array
     {
+        int pnlRED = jPanel1.getBackground().getRed();
+        int pnlGREEN = jPanel1.getBackground().getGreen();
+        int pnlBLUE = jPanel1.getBackground().getBlue();
         int n = 5;
         int m = 6;
         for (int i = 0; i < n; ++i)
@@ -58,6 +61,9 @@ public class Wordle extends javax.swing.JFrame {
                 pnlarr[i][j] = new javax.swing.JPanel();
                 add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(55 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
+                
+                //pnlarr[i][j].setBackground(new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20));
+                //pnlarr[i][j].setBackground(Color.red);
             }
         }
     }
@@ -120,14 +126,39 @@ public class Wordle extends javax.swing.JFrame {
         );
 
         btnQ.setText("Q");
+        btnQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQActionPerformed(evt);
+            }
+        });
 
         btnW.setText("W");
+        btnW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWActionPerformed(evt);
+            }
+        });
 
         btnE.setText("E");
+        btnE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEActionPerformed(evt);
+            }
+        });
 
         btnR.setText("R");
+        btnR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRActionPerformed(evt);
+            }
+        });
 
         btnT.setText("T");
+        btnT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTActionPerformed(evt);
+            }
+        });
 
         btnY.setText("Y");
         btnY.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +168,39 @@ public class Wordle extends javax.swing.JFrame {
         });
 
         btnU.setText("U");
+        btnU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUActionPerformed(evt);
+            }
+        });
 
         btnO.setText("O");
+        btnO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOActionPerformed(evt);
+            }
+        });
 
         btnI.setText("I");
+        btnI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIActionPerformed(evt);
+            }
+        });
 
         btnP.setText("P");
+        btnP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPActionPerformed(evt);
+            }
+        });
 
         btnA.setText("A");
+        btnA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAActionPerformed(evt);
+            }
+        });
 
         btnS.setText("S");
         btnS.addActionListener(new java.awt.event.ActionListener() {
@@ -154,30 +210,95 @@ public class Wordle extends javax.swing.JFrame {
         });
 
         btnD.setText("D");
+        btnD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDActionPerformed(evt);
+            }
+        });
 
         btnF.setText("F");
+        btnF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFActionPerformed(evt);
+            }
+        });
 
         btnG.setText("G");
+        btnG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGActionPerformed(evt);
+            }
+        });
 
         btnH.setText("H");
+        btnH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHActionPerformed(evt);
+            }
+        });
 
         btnJ.setText("J");
+        btnJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJActionPerformed(evt);
+            }
+        });
 
         btnK.setText("K");
+        btnK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKActionPerformed(evt);
+            }
+        });
 
         btnL.setText("L");
+        btnL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLActionPerformed(evt);
+            }
+        });
 
         btnZ.setText("Z");
+        btnZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZActionPerformed(evt);
+            }
+        });
 
         btnX.setText("X");
+        btnX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXActionPerformed(evt);
+            }
+        });
 
         btnC.setText("C");
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
 
         btnB.setText("B");
+        btnB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBActionPerformed(evt);
+            }
+        });
 
         btnN.setText("N");
+        btnN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNActionPerformed(evt);
+            }
+        });
 
         btnV.setText("V");
+        btnV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVActionPerformed(evt);
+            }
+        });
 
         btnDEL.setText("⌫");
         btnDEL.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +308,11 @@ public class Wordle extends javax.swing.JFrame {
         });
 
         btnM.setText("M");
+        btnM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMActionPerformed(evt);
+            }
+        });
 
         btnENT.setText("⏎");
 
@@ -337,7 +463,6 @@ public class Wordle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
-        Graphics g = pnlarr[curri][currj].getGraphics();
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Y");
@@ -348,21 +473,275 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
-        // TODO add your handling code here:
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("S");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
+        int pnlRED = jPanel1.getBackground().getRed();
+        int pnlGREEN = jPanel1.getBackground().getGreen();
+        int pnlBLUE = jPanel1.getBackground().getBlue();
         for (int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 6; ++j)
             {
                 Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(Color.RED);
+                pnlarr[i][j].setBackground(new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20));
             }
         }
         // this is test !
     }//GEN-LAST:event_btnDELActionPerformed
 
+    private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("Q");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnQActionPerformed
+
+    private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("W");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnWActionPerformed
+
+    private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("E");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnEActionPerformed
+
+    private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("R");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnRActionPerformed
+
+    private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("T");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnTActionPerformed
+
+    private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("U");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnUActionPerformed
+
+    private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("I");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnIActionPerformed
+
+    private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("O");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnOActionPerformed
+
+    private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("P");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnPActionPerformed
+
+    private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("A");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnAActionPerformed
+
+    private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("D");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnDActionPerformed
+
+    private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("F");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnFActionPerformed
+
+    private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("G");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnGActionPerformed
+
+    private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("H");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnHActionPerformed
+
+    private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("J");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnJActionPerformed
+
+    private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("K");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnKActionPerformed
+
+    private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("L");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnLActionPerformed
+
+    private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("Z");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnZActionPerformed
+
+    private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("X");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnXActionPerformed
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("C");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnCActionPerformed
+
+    private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("V");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnVActionPerformed
+
+    private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("B");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnBActionPerformed
+
+    private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("N");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnNActionPerformed
+
+    private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
+        javax.swing.JLabel lbl = new javax.swing.JLabel();
+        pnlarr[curri][currj].add(lbl);
+        lbl.setText("M");
+        Font font = new Font("Arial", Font.BOLD, 40);
+        lbl.setFont(font);
+        lbl.setVisible(true);
+        setI(curri + 1);
+    }//GEN-LAST:event_btnMActionPerformed
+
+    private void paintPanel(int i, int j, Color col)
+    {
+        pnlarr[i][j].setBackground(col);
+    }
+    
     public static void Run() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
