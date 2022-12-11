@@ -758,11 +758,6 @@ public class Wordle extends javax.swing.JFrame {
         setJ(currj + 1);
         setI(0);
     }//GEN-LAST:event_btnENTActionPerformed
-
-    private void paintPanel(int i, int j, Color col)
-    {
-        pnlarr[i][j].setBackground(col);
-    }
     
     public static void Run() {
         /* Set the Nimbus look and feel */
