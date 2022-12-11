@@ -744,7 +744,6 @@ public class Wordle extends javax.swing.JFrame {
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
-        System.out.println(currj + " " + curri);
         setJ(currj + 1);
         setI(0);
     }//GEN-LAST:event_btnENTActionPerformed
