@@ -12,12 +12,13 @@ import java.awt.*;
  */
 public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
-    private int curri;
-    private int currj;
+    private int curri; // index of current panel
+    private int currj; // index of current panel
+    private Color defaultCol; // default Color of pnlarr
     /**
      * Creates new form Wordle
      */
-    private void setJ(int currj)
+    private void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
         if (currj < 6)
@@ -26,17 +27,11 @@ public class Wordle extends javax.swing.JFrame {
             throw new RuntimeException("Out of bounds");
     }
     
-    private void setI(int curri)
+    private void setI(int curri) // setting curri variable
     {
         if (curri < 0) return ;
         if (curri < 5)
-            this.curri = curri;
-        else
-        {
-            this.curri = 0;
-            setJ(currj + 1);
-        }
-            
+            this.curri = curri;  
     }
     
     public Wordle() {
@@ -45,13 +40,19 @@ public class Wordle extends javax.swing.JFrame {
         init_arr();
         setI(0);
         setJ(0);
+        init_color();
     }
     
-    private void init_arr() // initializing panel array
+    private void init_color()
     {
         int pnlRED = jPanel1.getBackground().getRed();
         int pnlGREEN = jPanel1.getBackground().getGreen();
         int pnlBLUE = jPanel1.getBackground().getBlue();
+        defaultCol = new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20);
+    }
+    
+    private void init_arr() // initializing panel array
+    {
         int n = 5;
         int m = 6;
         for (int i = 0; i < n; ++i)
@@ -61,9 +62,6 @@ public class Wordle extends javax.swing.JFrame {
                 pnlarr[i][j] = new javax.swing.JPanel();
                 add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(55 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
-                
-                //pnlarr[i][j].setBackground(new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20));
-                //pnlarr[i][j].setBackground(Color.red);
             }
         }
     }
@@ -315,6 +313,11 @@ public class Wordle extends javax.swing.JFrame {
         });
 
         btnENT.setText("⏎");
+        btnENT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnENTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -483,18 +486,30 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        int pnlRED = jPanel1.getBackground().getRed();
-        int pnlGREEN = jPanel1.getBackground().getGreen();
-        int pnlBLUE = jPanel1.getBackground().getBlue();
-        for (int i = 0; i < 5; ++i)
+        /*for (int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 6; ++j)
             {
                 Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20));
+                pnlarr[i][j].setBackground(defaultColor);
             }
+        }*/
+        if (pnlarr[curri][currj].getComponentCount() == 0)
+            try
+            {
+                pnlarr[curri - 1][currj] = new MyPanel();
+                add(pnlarr[curri - 1][currj]);
+                pnlarr[curri - 1][currj].setBounds(55 + (curri - 1) * (51 + 20), 15 + currj * (51 + 20), 51, 51);
+                setI(curri - 1);
+            }
+            catch (RuntimeException e){}
+        else
+        {
+            pnlarr[curri][currj] = new MyPanel();
+            add(pnlarr[curri][currj]);
+            pnlarr[curri][currj].setBounds(55 + curri * (51 + 20), 15 + currj * (51 + 20), 51, 51);
         }
-        // this is test !
+// this is test !
     }//GEN-LAST:event_btnDELActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
@@ -736,6 +751,13 @@ public class Wordle extends javax.swing.JFrame {
         lbl.setVisible(true);
         setI(curri + 1);
     }//GEN-LAST:event_btnMActionPerformed
+
+    private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        System.out.println(currj + " " + curri);
+        setJ(currj + 1);
+        setI(0);
+    }//GEN-LAST:event_btnENTActionPerformed
 
     private void paintPanel(int i, int j, Color col)
     {

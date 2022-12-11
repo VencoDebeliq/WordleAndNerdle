@@ -435,6 +435,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x23ce;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnENTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

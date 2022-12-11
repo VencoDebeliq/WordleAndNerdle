@@ -6,10 +6,14 @@ package wordleandnerdle;
 
 /**
  *
- * @author mac
+ * @author Ventsislav Peychev
  */
-public class Main {
-    public static void main(String[] args) {
-        Wordle.Run();
+import java.awt.Color;
+public class MyPanel extends javax.swing.JPanel{
+    public MyPanel()
+    {
+        super();
+        setBackground(new Color(194, 197, 203));
     }
+    
 }
