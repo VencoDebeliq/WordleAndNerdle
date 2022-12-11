@@ -14,7 +14,6 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
     private int curri; // index of current panel
     private int currj; // index of current panel
-    private Color defaultCol; // default Color of pnlarr
     /**
      * Creates new form Wordle
      */
@@ -40,15 +39,6 @@ public class Wordle extends javax.swing.JFrame {
         init_arr();
         setI(0);
         setJ(0);
-        init_color();
-    }
-    
-    private void init_color()
-    {
-        int pnlRED = jPanel1.getBackground().getRed();
-        int pnlGREEN = jPanel1.getBackground().getGreen();
-        int pnlBLUE = jPanel1.getBackground().getBlue();
-        defaultCol = new Color(pnlRED - 20, pnlGREEN - 20, pnlBLUE - 20);
     }
     
     private void init_arr() // initializing panel array
