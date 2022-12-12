@@ -140,7 +140,43 @@ public class Nerdle extends javax.swing.JFrame {
         return 0;
     }
     
-    private String generateEquation()
+    private void paint(String eq)
+    {
+        boolean arrIsGreen[] = new boolean[8];
+        int countNums[] = new int [10];
+        for (int i = 0; i < equation.length(); ++i)
+        {
+            pnlarr[i][currj].getComponent(0).setForeground(Color.white);
+            if (!(equation.charAt(i) >= '0' && equation.charAt(i) <= '9'))
+            {
+                continue;
+            }
+            countNums[(equation.charAt(i) - '0')]++;
+            if (eq.charAt(i) == equation.charAt(i))
+            {
+                arrIsGreen[i] = true;
+                pnlarr[i][currj].setBackground(new Color(102, 255, 102));
+                countNums[(equation.charAt(i) - '0')]--;
+            }
+        }
+        
+        for (int i = 0; i < equation.length(); ++i)
+        {
+            if (arrIsGreen[i]) continue;
+            if (!(eq.charAt(i) >= '0' && eq.charAt(i) <= '9')) continue;
+            if (countNums[(eq.charAt(i) - '0')] == 0)
+            {
+                pnlarr[i][currj].setBackground(Color.BLACK);
+            }
+            else
+            {
+                pnlarr[i][currj].setBackground(new Color(102, 0, 153));
+                countNums[eq.charAt(i) - '0']--;
+            }
+        }
+    }
+    
+    private String generateEquation() // generates correct equation (has test outputs)
     {
         Random rand = new Random();
         String ans = "";
@@ -460,12 +496,13 @@ public class Nerdle extends javax.swing.JFrame {
         }
         for (int i = 0; i < 8; ++i)
         {
-            for (int j = 0; j < 6; ++j)
+            for (int j = currj; j < 6; ++j)
             {
                 pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
         }
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        paint(getEquation());
         setJ(currj + 1);
         setI(0);
         // test
