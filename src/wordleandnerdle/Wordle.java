@@ -5,6 +5,12 @@
 package wordleandnerdle;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,9 +20,9 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
     private int curri; // index of current panel
     private int currj; // index of current panel
-    /**
-     * Creates new form Wordle
-     */
+    private String word;
+    private FileReader fr;
+    
     private void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
@@ -40,6 +46,48 @@ public class Wordle extends javax.swing.JFrame {
         setI(0);
         setJ(0);
     }
+    public String getWordfrompanels(){
+        String s = "";
+        for (int i = 0; i < 5; ++i)
+        {
+            Component c = pnlarr[i][currj].getComponent(0);
+            if (c instanceof javax.swing.JLabel)
+            {
+                s += ((javax.swing.JLabel) c).getText();
+            }
+        }
+        System.out.println(s);
+        return s;
+    
+    }
+    //public boolean checkIfWordexists(){
+        /*boolean check=true;
+        try {
+            fr=new FileReader("wordsfromwordle.txt");
+            BufferedReader bf=new BufferedReader(fr);
+            String word;
+            
+            while((word=bf.readLine())!=null){
+                if(word.equalsIgnoreCase(getWordfrompanels())){
+                    check=true;
+                    
+                }
+                else{
+                    check=false;
+                    
+                }
+            }
+           
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return check;*/
+        
+    //}
+    
     
     private void init_arr() // initializing panel array
     {
@@ -476,14 +524,14 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        /*for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 6; ++j)
             {
                 Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(defaultColor);
+                pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
-        }*/
+        }
         if (pnlarr[curri][currj].getComponentCount() == 0)
             try
             {
@@ -744,8 +792,10 @@ public class Wordle extends javax.swing.JFrame {
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        System.out.println(getWordfrompanels());
         setJ(currj + 1);
         setI(0);
+        
     }//GEN-LAST:event_btnENTActionPerformed
     
     public static void Run() {

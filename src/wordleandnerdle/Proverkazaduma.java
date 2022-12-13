@@ -4,16 +4,15 @@
  */
 package wordleandnerdle;
 
-import java.io.File;
-
 /**
  *
  * @author mac
  */
-public class Main {
-    public static void main(String[] args) {
-     
-        Wordle.Run();
+public class Proverkazaduma {
+    
+    private String word;
+    public void setWord(){
         
     }
+    
 }
