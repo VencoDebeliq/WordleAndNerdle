@@ -158,7 +158,7 @@ public class Nerdle extends javax.swing.JFrame {
                 pnlarr[i][currj].setBackground(new Color(102, 255, 102));
                 countNums[(equation.charAt(i) - '0')]--;
             }
-        }
+        } // for za zeleni cifri
         
         for (int i = 0; i < equation.length(); ++i)
         {
@@ -166,13 +166,154 @@ public class Nerdle extends javax.swing.JFrame {
             if (!(eq.charAt(i) >= '0' && eq.charAt(i) <= '9')) continue;
             if (countNums[(eq.charAt(i) - '0')] == 0)
             {
-                pnlarr[i][currj].setBackground(Color.BLACK);
+                pnlarr[i][currj].setBackground(Color.gray);
             }
             else
             {
                 pnlarr[i][currj].setBackground(new Color(102, 0, 153));
                 countNums[eq.charAt(i) - '0']--;
             }
+        } // for za lilavi i cherni cifri
+        for (int i = 0; i < eq.length(); ++i)
+        {
+            if (eq.charAt(i) >= '0' && eq.charAt(i) <= '9') continue;
+            boolean ok = true;
+            for (int j = 0; j < equation.length(); ++j)
+            {
+                if (eq.charAt(i) == equation.charAt(j))
+                {
+                    ok = false;
+                    if (i == j)
+                    {
+                        arrIsGreen[i] = true;
+                        pnlarr[i][currj].setBackground(new Color(102, 255, 102));
+                    }
+                    else
+                    {
+                        pnlarr[i][currj].setBackground(new Color(102, 0, 153));
+                    }
+                }
+            }
+            if (ok) pnlarr[i][currj].setBackground(Color.gray);
+        } // for za znaci
+        
+        for (int i = 0; i < eq.length(); ++i)
+        {
+            if (!arrIsGreen[i]) continue;
+            paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
+        }
+        
+        for (int i = 0; i < eq.length(); ++i)
+        {
+            if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
+            paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
+        }
+    }
+    
+    private void paintBtn(char c, Color col)
+    {
+        System.out.println("in paint btn");
+        switch (c)
+        {
+            case '1':
+                btn1.setForeground(Color.white);
+                btn1.setBackground(col);
+                break;
+            case '2':
+                btn2.setForeground(Color.white);
+                btn2.setBackground(col);
+                break;
+            case '3':
+                btn3.setForeground(Color.white);
+                btn3.setBackground(col);
+                break;
+            case '4':
+                btn4.setForeground(Color.white);
+                btn4.setBackground(col);
+                break;
+            case '5':
+                btn5.setForeground(Color.white);
+                btn5.setBackground(col);
+                break;
+            case '6':
+                btn6.setForeground(Color.white);
+                btn6.setBackground(col);
+                break;
+            case '7':
+                btn7.setForeground(Color.white);
+                btn7.setBackground(col);
+                break;
+            case '8':
+                btn8.setForeground(Color.white);
+                btn8.setBackground(col);
+                break;
+            case '9':
+                btn9.setForeground(Color.white);
+                btn9.setBackground(col);
+                break;
+            case '0':
+                btn0.setForeground(Color.white);
+                btn0.setBackground(col);
+                break;
+            case '+':
+                btnPLUS.setForeground(Color.white);
+                btnPLUS.setBackground(col);
+                break;
+            case '-':
+                btnMINUS.setForeground(Color.white);
+                btnMINUS.setBackground(col);
+                break;
+            case '*':
+                btnMULTIPL.setForeground(Color.white);
+                btnMULTIPL.setBackground(col);
+                break;
+            case '/':
+                btnDIV.setForeground(Color.white);
+                btnDIV.setBackground(col);
+                break;
+            case '=':
+                btnEQ.setForeground(Color.white);
+                btnEQ.setBackground(col);
+                break;
+        }
+    }
+
+    private Color getBtnColor(char c)
+    {
+        switch (c)
+        {
+            case '1':
+                return btn1.getBackground();
+            case '2':
+                return btn2.getBackground();
+            case '3':
+                return btn3.getBackground();
+            case '4':
+                return btn4.getBackground();
+            case '5':
+                return btn5.getBackground();
+            case '6':
+                return btn6.getBackground();
+            case '7':
+                return btn7.getBackground();
+            case '8':
+                return btn8.getBackground();
+            case '9':
+                return btn9.getBackground();
+            case '0':
+                return btn0.getBackground();
+            case '+':
+                return btnPLUS.getBackground();
+            case '-':
+                return btnMINUS.getBackground();
+            case '*':
+                return btnMULTIPL.getBackground();
+            case '/':
+                return btnDIV.getBackground();
+            case '=':
+                return btnEQ.getBackground();
+            default:
+                return new MyPanel().getBackground();
         }
     }
     
