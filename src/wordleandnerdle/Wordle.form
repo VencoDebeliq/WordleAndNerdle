@@ -46,7 +46,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel3" max="32767" attributes="0"/>
-              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -70,7 +74,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="439" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -84,79 +88,80 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btnQ" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnQ" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnW" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnW" min="-2" pref="39" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnE" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnE" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnR" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnR" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnT" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnT" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnY" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnY" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnU" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnU" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnI" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnI" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnO" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnO" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnP" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnP" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="btnA" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnA" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="btnENT" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnENT" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnS" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnS" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnD" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnD" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnF" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnF" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnG" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnG" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnZ" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnZ" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnX" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnX" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnC" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnC" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnV" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnV" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnH" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnH" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnJ" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnJ" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnK" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnK" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnB" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnB" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnN" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnN" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnM" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnM" min="-2" pref="37" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="btnL" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="btnL" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="btnDEL" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnDEL" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -214,26 +219,41 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Q"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnW">
               <Properties>
                 <Property name="text" type="java.lang.String" value="W"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnE">
               <Properties>
                 <Property name="text" type="java.lang.String" value="E"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnR">
               <Properties>
                 <Property name="text" type="java.lang.String" value="R"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnY">
               <Properties>
@@ -247,26 +267,41 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="U"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnO">
               <Properties>
                 <Property name="text" type="java.lang.String" value="O"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnI">
               <Properties>
                 <Property name="text" type="java.lang.String" value="I"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnP">
               <Properties>
                 <Property name="text" type="java.lang.String" value="P"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="A"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnS">
               <Properties>
@@ -280,81 +315,129 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="D"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnF">
               <Properties>
                 <Property name="text" type="java.lang.String" value="F"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnG">
               <Properties>
                 <Property name="text" type="java.lang.String" value="G"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnH">
               <Properties>
                 <Property name="text" type="java.lang.String" value="H"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnJ">
               <Properties>
                 <Property name="text" type="java.lang.String" value="J"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="K"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnL">
               <Properties>
                 <Property name="text" type="java.lang.String" value="L"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnZ">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Z"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnX">
               <Properties>
                 <Property name="text" type="java.lang.String" value="X"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="C"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnB">
               <Properties>
                 <Property name="text" type="java.lang.String" value="B"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnN">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnV">
               <Properties>
                 <Property name="text" type="java.lang.String" value="V"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDEL">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x232b;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDELActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnM">
               <Properties>
                 <Property name="text" type="java.lang.String" value="M"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnENT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x23ce;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnENTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
