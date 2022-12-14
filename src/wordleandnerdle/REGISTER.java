@@ -5,6 +5,8 @@
 package wordleandnerdle;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -28,6 +30,9 @@ public class REGISTER extends javax.swing.JFrame {
     public REGISTER() {
         initComponents();
         setResizable(false);
+        Toolkit obj=getToolkit();
+        Dimension size=obj.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         notlbl.setVisible(false);
         notlbl2.setVisible(false);
         setTitle("REGISTRATION");

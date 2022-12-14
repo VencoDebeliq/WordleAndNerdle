@@ -7,11 +7,7 @@ package wordleandnerdle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,101 +15,21 @@ import java.util.logging.Logger;
  *
  * @author mac
  */
-public class Wordle extends javax.swing.JFrame {
-    private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
-    private int curri; // index of current panel
-    private int currj; // index of current panel
-    private String word;
-    private FileReader fr;
+public class Wordle extends WordleMethods {
     
-    private void setJ(int currj) // setting currj variable
-    {
-        if (currj < 0) return;
-        if (currj < 6)
-            this.currj = currj;
-        else
-            throw new RuntimeException("Out of bounds");
-    }
-    
-    private void setI(int curri) // setting curri variable
-    {
-        if (curri < 0) return ;
-        if (curri < 5)
-            this.curri = curri;  
-    }
-    
+   private final int dulzhina=5;
+   
     public Wordle() throws FileNotFoundException {
+        super();
         setTitle("Wordle");
-        initComponents();
+        initComponents(); 
+        Toolkit obj=getToolkit();
+        Dimension size=obj.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         init_arr();
-        setI(0);
-        setJ(0);
          lblwordlist.setVisible(false);
-         word=generateRandomword();
+         
     }
-    
-    public String getWordfrompanels(){
-        String answer = "";
-        for (int i = 0; i < 5; ++i)
-        {
-            Component c = pnlarr[i][currj].getComponent(0);
-            if (c instanceof javax.swing.JLabel)
-            {
-                answer += ((javax.swing.JLabel) c).getText();
-            }
-        }
-        //System.out.println(s);
-        return answer;
-    
-    }
-    public String generateRandomword() throws FileNotFoundException{
-        Random gen=new Random();
-         //int counter=0;
-         String randomword = null;
-         int countercheck=1;
-        try {
-            fr=new FileReader("wordsfromwordle.txt");
-        BufferedReader bf=new BufferedReader(fr);
-            
-                    /*while(bf.readLine()!=null){
-                counter++;
-            }*/
-            int randomline=gen.nextInt(496)+1;
-           while((bf.readLine())!=null){
-                countercheck++;
-                if(countercheck==randomline){
-                  
-                    randomword=bf.readLine();
-                }
-                
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       return randomword;
-    }
-    public boolean checkIfWordexists(){
-        try {
-            fr=new FileReader("wordsfromwordle.txt");
-            BufferedReader bf=new BufferedReader(fr);
-            String wordcheck;
-            
-            while((wordcheck=bf.readLine())!=null){
-                if(wordcheck.equals(getWordfrompanels().toLowerCase())){
-                    return true;
-                }
-            }
-           
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return false;
-        
-    }
-    
     
     private void init_arr() // initializing panel array
     {
@@ -458,7 +374,7 @@ public class Wordle extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlkeyboardLayout.createSequentialGroup()
@@ -828,17 +744,25 @@ public class Wordle extends javax.swing.JFrame {
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
          System.out.println(word);
-         System.out.println(getWordfrompanels());
+         //System.out.println(getWordfrompanels());
         try{
          if (pnlarr[curri][currj].getComponentCount() == 0) return;
         }
          catch(ArrayIndexOutOfBoundsException e){
          }
-            // checking if the panle has any components
+         
         if(checkIfWordexists()==true){
+            paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
+            if(getCounter()==true){
+                
+            }
+             
            setJ(currj + 1);
            setI(0); 
+          
+           
         }
+         
         else{
             lblwordlist.setVisible(true);
              ActionListener taskperformer=new ActionListener() {
@@ -850,6 +774,8 @@ public class Wordle extends javax.swing.JFrame {
             };
             new javax.swing.Timer(3000, taskperformer).start();
         }
+         
+        
         
       
     }//GEN-LAST:event_btnENTActionPerformed
@@ -889,7 +815,7 @@ public class Wordle extends javax.swing.JFrame {
             }
         });
     }
-
+/*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnA;
     private javax.swing.JButton btnB;
@@ -925,4 +851,8 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JLabel lblwordlist;
     private javax.swing.JPanel pnlkeyboard;
     // End of variables declaration//GEN-END:variables
+*/
+
 }
+
+

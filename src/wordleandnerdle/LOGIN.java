@@ -5,6 +5,8 @@
 package wordleandnerdle;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
@@ -24,6 +26,9 @@ public class LOGIN extends javax.swing.JFrame {
     public LOGIN() {
         initComponents();
         setResizable(false);
+        Toolkit obj=getToolkit();
+        Dimension size=obj.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         setTitle("LOG IN");
         notlbl.setVisible(false);
     }
