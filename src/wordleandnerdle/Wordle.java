@@ -93,21 +93,14 @@ public class Wordle extends javax.swing.JFrame {
        return randomword;
     }
     public boolean checkIfWordexists(){
-        boolean check = false;
         try {
             fr=new FileReader("wordsfromwordle.txt");
             BufferedReader bf=new BufferedReader(fr);
             String wordcheck;
             
             while((wordcheck=bf.readLine())!=null){
-                if(wordcheck.equalsIgnoreCase(getWordfrompanels())){
-                    check=true;
-                    
-                }
-                else{
-                   
-                    check=false;
-                
+                if(wordcheck.equals(getWordfrompanels().toLowerCase())){
+                    return true;
                 }
             }
            
@@ -117,7 +110,7 @@ public class Wordle extends javax.swing.JFrame {
             Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return check;
+        return false;
         
     }
     
@@ -836,9 +829,15 @@ public class Wordle extends javax.swing.JFrame {
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
          System.out.println(word);
          System.out.println(getWordfrompanels());
-        if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        try{
+         if (pnlarr[curri][currj].getComponentCount() == 0) return;
+        }
+         catch(ArrayIndexOutOfBoundsException e){
+         }
+            // checking if the panle has any components
         if(checkIfWordexists()==true){
-            
+           setJ(currj + 1);
+           setI(0); 
         }
         else{
             lblwordlist.setVisible(true);
@@ -851,8 +850,7 @@ public class Wordle extends javax.swing.JFrame {
             };
             new javax.swing.Timer(3000, taskperformer).start();
         }
-        setJ(currj + 1);
-        setI(0);
+        
       
     }//GEN-LAST:event_btnENTActionPerformed
     

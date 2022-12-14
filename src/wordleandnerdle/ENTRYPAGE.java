@@ -4,6 +4,10 @@
  */
 package wordleandnerdle;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 
@@ -111,7 +115,11 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     private void btnplaywordleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaywordleActionPerformed
         // TODO add your handling code here:
         dispose();
-        new Wordle().setVisible(true);
+        try {
+            new Wordle().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ENTRYPAGE.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnplaywordleActionPerformed
 
     private void btnplaynerdleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaynerdleActionPerformed

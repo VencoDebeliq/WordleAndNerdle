@@ -13,7 +13,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
      
-        LOGIN.Run();
+        Wordle.Run();
         
     }
 }
