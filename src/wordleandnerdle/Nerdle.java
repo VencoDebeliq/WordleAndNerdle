@@ -4,46 +4,31 @@
  */
 package wordleandnerdle;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+=======
+>>>>>>> a7400bea7b5c5a2d4fb57b93309c168a46dde755
 
 /**
  *
  * @author mac
  */
-public class Nerdle extends javax.swing.JFrame {
-    private String equation;
-    private javax.swing.JPanel[][] pnlarr = new javax.swing.JPanel[8][6];
-    private int curri;
-    private int currj;
+public class Nerdle extends NerdleMethods {
     
-    private void setJ(int currj) // setting currj variable
-    {
-        if (currj < 0) return;
-        if (currj < 6)
-            this.currj = currj;
-        else
-            throw new RuntimeException("Out of bounds");
-    }
     
-    private void setI(int curri) // setting curri variable
-    {
-        if (curri < 0) return ;
-        if (curri < 8)
-            this.curri = curri;  
-    }
     /**
      * Creates new form Nerdle
      */
     
     public Nerdle() {
+        super();
         setTitle("Nerdle");
         initComponents();
         init_arr();
+<<<<<<< HEAD
         equation = generateEquation();
         lblequation.setVisible(false);
     }
@@ -89,7 +74,12 @@ public class Nerdle extends javax.swing.JFrame {
         {
             return false;
         }
+=======
+>>>>>>> a7400bea7b5c5a2d4fb57b93309c168a46dde755
     }
+    
+    
+    
     
     private void init_arr()
     {
@@ -106,116 +96,13 @@ public class Nerdle extends javax.swing.JFrame {
         }
     }
     
-    private int getEqAns(int a, int b, int si)
-    {
-        switch (si)
-        {
-            case 0:
-                if (a % b == 0)
-                    return a / b;
-                else
-                    throw new RuntimeException("Incorrect input");
-            case 1:
-                return a * b;
-            case 2:
-                return a + b;
-            case 3:
-                return a - b;
-        }
-        return 0;
-    }
-    private int getEqAns(int a, int b, char si)
-    {
-        switch (si)
-        {
-            case '/':
-                if (a % b == 0)
-                    return a / b;
-                else
-                    throw new RuntimeException("Incorrect input");
-            case '*':
-                return a * b;
-            case '+':
-                return a + b;
-            case '-':
-                return a - b;
-        }
-        return 0;
-    }
     
-    private void paint(String eq)
-    {
-        boolean arrIsGreen[] = new boolean[8];
-        int countNums[] = new int [10];
-        for (int i = 0; i < equation.length(); ++i)
-        {
-            pnlarr[i][currj].getComponent(0).setForeground(Color.white);
-            if (!(equation.charAt(i) >= '0' && equation.charAt(i) <= '9'))
-            {
-                continue;
-            }
-            countNums[(equation.charAt(i) - '0')]++;
-            if (eq.charAt(i) == equation.charAt(i))
-            {
-                arrIsGreen[i] = true;
-                pnlarr[i][currj].setBackground(new Color(102, 255, 102));
-                countNums[(equation.charAt(i) - '0')]--;
-            }
-        }
-        
-        for (int i = 0; i < equation.length(); ++i)
-        {
-            if (arrIsGreen[i]) continue;
-            if (!(eq.charAt(i) >= '0' && eq.charAt(i) <= '9')) continue;
-            if (countNums[(eq.charAt(i) - '0')] == 0)
-            {
-                pnlarr[i][currj].setBackground(Color.BLACK);
-            }
-            else
-            {
-                pnlarr[i][currj].setBackground(new Color(102, 0, 153));
-                countNums[eq.charAt(i) - '0']--;
-            }
-        }
-    }
     
-    private String generateEquation() // generates correct equation (has test outputs)
-    {
-        Random rand = new Random();
-        String ans = "";
-        final char[] znaci = 
-        {
-            '/', '*', '+', '-'
-        };
-        while (ans.length() != 8)
-        {
-            ans = "";
-            int a = rand.nextInt(999) + 1;
-            int b = rand.nextInt(999) + 1;
-            int randInt = rand.nextInt(4);
-            ans += a;
-            ans += znaci[randInt];
-            ans += b;
-            ans += '=';
-            try
-            {
-                if (getEqAns(a, b, randInt) < 0)
-                {
-                    ans = "";
-                    continue;
-                }
-                ans += getEqAns(a, b, randInt);
-            }
-            catch (RuntimeException re)
-            {
-                ans = "";
-                continue;
-            }
-            if (ans.length() <= 6) System.out.println("Less than 6");
-        }
-        System.out.println(ans);
-        return ans;
-    }
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -502,6 +389,7 @@ public class Nerdle extends javax.swing.JFrame {
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
         try
         {
+<<<<<<< HEAD
             if (!is_valid(getEquation())) 
                 lblequation.setVisible(true);
              ActionListener taskperformer=new ActionListener() {
@@ -514,6 +402,9 @@ public class Nerdle extends javax.swing.JFrame {
             new javax.swing.Timer(3000, taskperformer).start();
                 
                 return;
+=======
+            if (!is_valid(Methods.getInput(pnlarr, currj))) return;
+>>>>>>> a7400bea7b5c5a2d4fb57b93309c168a46dde755
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
@@ -527,7 +418,7 @@ public class Nerdle extends javax.swing.JFrame {
             }
         }
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
-        paint(getEquation());
+        paint(Methods.getInput(pnlarr, currj));
         setJ(currj + 1);
         setI(0);
         // test
@@ -713,7 +604,7 @@ public class Nerdle extends javax.swing.JFrame {
             }
         });
     }
-
+    /*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;
     private javax.swing.JButton btn1;
@@ -736,4 +627,6 @@ public class Nerdle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblequation;
     // End of variables declaration//GEN-END:variables
+    */
+
 }
