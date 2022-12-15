@@ -16,23 +16,13 @@ public class NerdleMethods extends javax.swing.JFrame {
     protected javax.swing.JPanel[][] pnlarr = new javax.swing.JPanel[8][6];
     protected int curri;
     protected int currj;
-    protected int counter;
     
-    
-    protected void setCounter(int counter){
-        this.counter=counter;
-    }
-    protected int getCounter(){
-        return counter;
-    }
     
     protected void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
         if (currj < 6)
             this.currj = currj;
-        //else
-            //throw new RuntimeException("Out of bounds");
     }
     
     protected void setI(int curri) // setting curri variable
@@ -44,7 +34,7 @@ public class NerdleMethods extends javax.swing.JFrame {
     
     protected NerdleMethods()
     {
-        equation = generateEquation();
+        equation = generate();
     }
     
     protected boolean is_valid(String eq)
@@ -115,7 +105,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         return 0;
     }
     
-    protected String generateEquation() // generates correct equation (has test outputs)
+    protected String generate() // generates correct equation (has test outputs)
     {
         Random rand = new Random();
         String ans = "";
@@ -153,7 +143,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         return ans;
     }
     
-    protected void paint(String eq)
+    protected void paintPanels(String eq)
     {
         boolean arrIsGreen[] = new boolean[8];
         int countNums[] = new int [10];
@@ -221,26 +211,10 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
             paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
         }
-        int counter=0;
-        for (int i = 0; i < arrIsGreen.length; i++) {
-            if(arrIsGreen[i]==true){
-                counter++;
-            }
-            
-        }
-        if(counter==8){
-            setCounter(2);
-        }
-        else{
-            setCounter(1);
-        }
-        
-        
     }
     
     private void paintBtn(char c, Color col)
     {
-        System.out.println("in paint btn");
         switch (c)
         {
             case '1':
@@ -344,6 +318,8 @@ public class NerdleMethods extends javax.swing.JFrame {
                 return new MyPanel().getBackground();
         }
     }
+    
+    
     protected javax.swing.JButton btn0;
     protected javax.swing.JButton btn1;
     protected javax.swing.JButton btn2;

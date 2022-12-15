@@ -24,7 +24,7 @@ public class Goodgame extends javax.swing.JFrame {
         setTitle("GOOD GAME");
         Toolkit obj=getToolkit();
         Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2+400,size.height/2-getHeight());
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         String name=Registersystem.getUsername();
         lblscore.setText(String.format("%s, YOU GET %d POINTS!",name,0));
         lbltotalscore.setText(String.format("YOU HAVE %d POINTS",0));

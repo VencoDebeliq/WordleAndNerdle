@@ -20,7 +20,7 @@ public class Nerdle extends NerdleMethods {
     /**
      * Creates new form Nerdle
      */
-    private final int dulzhyna=8;
+    private final int dulzhina=8;
     
     
     public Nerdle() {
@@ -337,20 +337,19 @@ public class Nerdle extends NerdleMethods {
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
         try
         {
-            if (!is_valid(GetInfofromPanels.getInput(pnlarr, currj,dulzhyna))) 
+            if (!is_valid(GetInfofromPanels.getInput(pnlarr, currj, dulzhina)))
+            {
                 lblequation.setVisible(true);
-             ActionListener taskperformer=new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    lblequation.setVisible(false);
+                ActionListener taskperformer=new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        lblequation.setVisible(false);
 
-                }
-            };
-            new javax.swing.Timer(3000, taskperformer).start();
-                
-          
-               
-            if (!is_valid(GetInfofromPanels.getInput(pnlarr, currj,dulzhyna))) return;
+                    }
+                };
+                new javax.swing.Timer(1000, taskperformer).start();
+                return;
+            }
         }
         catch (ArrayIndexOutOfBoundsException e)
         {
@@ -361,14 +360,13 @@ public class Nerdle extends NerdleMethods {
             for (int j = currj; j < 6; ++j)
             {
                 pnlarr[i][j].repaint();
-                //pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
         }
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
-        paint(GetInfofromPanels.getInput(pnlarr, currj,dulzhyna));
-        System.out.println(currj);
-        if(GetInfofromPanels.solved(pnlarr, currj, 8)){
-            System.out.println("in if");
+        
+        paintPanels(GetInfofromPanels.getInput(pnlarr, currj,dulzhina));
+        
+        if (GetInfofromPanels.solved(pnlarr, currj, 8)){
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -376,15 +374,12 @@ public class Nerdle extends NerdleMethods {
 
                 }
             };
-            new javax.swing.Timer(1000, taskperformer).start();
-            
-         
+            new javax.swing.Timer(1500, taskperformer).start();
             new Goodgame().setVisible(true);
-
+            return;
         }
         else if (currj == 5)
         {
-            System.out.println("in else");
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -392,16 +387,12 @@ public class Nerdle extends NerdleMethods {
 
                 }
             };
-            new javax.swing.Timer(1000, taskperformer).start();
-            
-         
+            new javax.swing.Timer(1500, taskperformer).start();
             new Gameover().setVisible(true);
+            return;
         }
         setJ(currj + 1);
         setI(0);
-        
-         
-       
     }//GEN-LAST:event_btnENTActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
