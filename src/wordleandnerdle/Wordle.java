@@ -5,6 +5,15 @@
 package wordleandnerdle;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,9 +23,9 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
     private int curri; // index of current panel
     private int currj; // index of current panel
-    /**
-     * Creates new form Wordle
-     */
+    private String word;
+    private FileReader fr;
+    
     private void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
@@ -33,13 +42,84 @@ public class Wordle extends javax.swing.JFrame {
             this.curri = curri;  
     }
     
-    public Wordle() {
+    public Wordle() throws FileNotFoundException {
         setTitle("Wordle");
         initComponents();
         init_arr();
         setI(0);
         setJ(0);
+         lblwordlist.setVisible(false);
+         word=generateRandomword();
     }
+    
+    public String getWordfrompanels(){
+        String s = "";
+        for (int i = 0; i < 5; ++i)
+        {
+            Component c = pnlarr[i][currj].getComponent(0);
+            if (c instanceof javax.swing.JLabel)
+            {
+                s += ((javax.swing.JLabel) c).getText();
+            }
+        }
+        System.out.println(s);
+        return s;
+    
+    }
+    public String generateRandomword() throws FileNotFoundException{
+        Random gen=new Random();
+         //int counter=0;
+         String randomword = null;
+         int countercheck=1;
+        try {
+            fr=new FileReader("wordsfromwordle.txt");
+        BufferedReader bf=new BufferedReader(fr);
+            
+                    /*while(bf.readLine()!=null){
+                counter++;
+            }*/
+            int randomline=gen.nextInt(496)+1;
+           while((bf.readLine())!=null){
+                countercheck++;
+                if(countercheck==randomline){
+                  
+                    randomword=bf.readLine();
+                }
+                
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return randomword;
+    }
+    public boolean checkIfWordexists(){
+        boolean check = false;
+        try {
+            fr=new FileReader("wordsfromwordle.txt");
+            BufferedReader bf=new BufferedReader(fr);
+            String wordcheck;
+            
+            while((wordcheck=bf.readLine())!=null){
+                if(wordcheck.equalsIgnoreCase(getWordfrompanels())){
+                    check=true;
+                    
+                }
+                else{
+                    check=false;
+                    
+                }
+            }
+           
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return check;
+        
+    }
+    
     
     private void init_arr() // initializing panel array
     {
@@ -68,6 +148,7 @@ public class Wordle extends javax.swing.JFrame {
         jButton27 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        lblwordlist = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnQ = new javax.swing.JButton();
         btnW = new javax.swing.JButton();
@@ -102,15 +183,24 @@ public class Wordle extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblwordlist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblwordlist.setText("NOT A WORD IN THE LIST");
+        lblwordlist.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 413, Short.MAX_VALUE))
         );
 
         btnQ.setText("Q");
@@ -476,14 +566,14 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        /*for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 6; ++j)
             {
                 Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(defaultColor);
+                pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
-        }*/
+        }
         if (pnlarr[curri][currj].getComponentCount() == 0)
             try
             {
@@ -743,9 +833,26 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
+         System.out.println(word);
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        //System.out.println(getWordfrompanels());
+        if(checkIfWordexists()==true){
+            
+        }
+        else{
+            lblwordlist.setVisible(true);
+             ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    lblwordlist.setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(3000, taskperformer).start();
+        }
         setJ(currj + 1);
         setI(0);
+      
     }//GEN-LAST:event_btnENTActionPerformed
     
     public static void Run() {
@@ -775,7 +882,11 @@ public class Wordle extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Wordle().setVisible(true);
+                try {
+                    new Wordle().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -813,5 +924,6 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblwordlist;
     // End of variables declaration//GEN-END:variables
 }
