@@ -4,6 +4,12 @@
  */
 package wordleandnerdle;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 
@@ -19,6 +25,9 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     public ENTRYPAGE() {
         initComponents();
         setResizable(false);
+        Toolkit obj=getToolkit();
+        Dimension size=obj.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         String name = Registersystem.getUsername();
         jLabel1.setText(String.format("Hello, %s", name));
         
@@ -111,7 +120,11 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     private void btnplaywordleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaywordleActionPerformed
         // TODO add your handling code here:
         dispose();
-        new Wordle().setVisible(true);
+        try {
+            new Wordle().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ENTRYPAGE.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnplaywordleActionPerformed
 
     private void btnplaynerdleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaynerdleActionPerformed

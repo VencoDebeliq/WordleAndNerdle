@@ -7,11 +7,7 @@ package wordleandnerdle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,107 +15,21 @@ import java.util.logging.Logger;
  *
  * @author mac
  */
-public class Wordle extends javax.swing.JFrame {
-    private javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
-    private int curri; // index of current panel
-    private int currj; // index of current panel
-    private String word;
-    private FileReader fr;
+public class Wordle extends WordleMethods {
     
-    private void setJ(int currj) // setting currj variable
-    {
-        if (currj < 0) return;
-        if (currj < 6)
-            this.currj = currj;
-        else
-            throw new RuntimeException("Out of bounds");
-    }
-    
-    private void setI(int curri) // setting curri variable
-    {
-        if (curri < 0) return ;
-        if (curri < 5)
-            this.curri = curri;  
-    }
-    
+   private final int dulzhina=5;
+   
     public Wordle() throws FileNotFoundException {
+        super();
         setTitle("Wordle");
-        initComponents();
+        initComponents(); 
+        Toolkit obj=getToolkit();
+        Dimension size=obj.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         init_arr();
-        setI(0);
-        setJ(0);
-         lblwordlist.setVisible(false);
-         word=generateRandomword();
+        lblwordlist.setVisible(false);
+         
     }
-    
-    public String getWordfrompanels(){
-        String s = "";
-        for (int i = 0; i < 5; ++i)
-        {
-            Component c = pnlarr[i][currj].getComponent(0);
-            if (c instanceof javax.swing.JLabel)
-            {
-                s += ((javax.swing.JLabel) c).getText();
-            }
-        }
-        System.out.println(s);
-        return s;
-    
-    }
-    public String generateRandomword() throws FileNotFoundException{
-        Random gen=new Random();
-         //int counter=0;
-         String randomword = null;
-         int countercheck=1;
-        try {
-            fr=new FileReader("wordsfromwordle.txt");
-        BufferedReader bf=new BufferedReader(fr);
-            
-                    /*while(bf.readLine()!=null){
-                counter++;
-            }*/
-            int randomline=gen.nextInt(496)+1;
-           while((bf.readLine())!=null){
-                countercheck++;
-                if(countercheck==randomline){
-                  
-                    randomword=bf.readLine();
-                }
-                
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       return randomword;
-    }
-    public boolean checkIfWordexists(){
-        boolean check = false;
-        try {
-            fr=new FileReader("wordsfromwordle.txt");
-            BufferedReader bf=new BufferedReader(fr);
-            String wordcheck;
-            
-            while((wordcheck=bf.readLine())!=null){
-                if(wordcheck.equalsIgnoreCase(getWordfrompanels())){
-                    check=true;
-                    
-                }
-                else{
-                    check=false;
-                    
-                }
-            }
-           
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return check;
-        
-    }
-    
     
     private void init_arr() // initializing panel array
     {
@@ -149,7 +59,7 @@ public class Wordle extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblwordlist = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlkeyboard = new javax.swing.JPanel();
         btnQ = new javax.swing.JButton();
         btnW = new javax.swing.JButton();
         btnE = new javax.swing.JButton();
@@ -192,15 +102,15 @@ public class Wordle extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(137, 137, 137)
                 .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 413, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 447, Short.MAX_VALUE)
+                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         btnQ.setText("Q");
@@ -399,14 +309,14 @@ public class Wordle extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlkeyboardLayout = new javax.swing.GroupLayout(pnlkeyboard);
+        pnlkeyboard.setLayout(pnlkeyboardLayout);
+        pnlkeyboardLayout.setHorizontalGroup(
+            pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlkeyboardLayout.createSequentialGroup()
                         .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -427,15 +337,15 @@ public class Wordle extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(pnlkeyboardLayout.createSequentialGroup()
+                        .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnENT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,7 +353,7 @@ public class Wordle extends javax.swing.JFrame {
                                 .addComponent(btnF, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnG, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,32 +362,32 @@ public class Wordle extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnV, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                                 .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(btnDEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlkeyboardLayout.setVerticalGroup(
+            pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlkeyboardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnE, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,7 +399,7 @@ public class Wordle extends javax.swing.JFrame {
                     .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -500,7 +410,7 @@ public class Wordle extends javax.swing.JFrame {
                     .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlkeyboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +430,7 @@ public class Wordle extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlkeyboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -528,7 +438,7 @@ public class Wordle extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlkeyboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -546,6 +456,7 @@ public class Wordle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Y");
@@ -556,6 +467,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("S");
@@ -566,14 +478,6 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        for (int i = 0; i < 5; ++i)
-        {
-            for (int j = 0; j < 6; ++j)
-            {
-                Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(new MyPanel().getBackground());
-            }
-        }
         if (pnlarr[curri][currj].getComponentCount() == 0)
             try
             {
@@ -593,6 +497,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDELActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Q");
@@ -603,6 +508,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("W");
@@ -613,6 +519,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWActionPerformed
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("E");
@@ -623,6 +530,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("R");
@@ -633,6 +541,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("T");
@@ -643,6 +552,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("U");
@@ -653,6 +563,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("I");
@@ -663,6 +574,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("O");
@@ -673,6 +585,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("P");
@@ -683,6 +596,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("A");
@@ -693,6 +607,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("D");
@@ -703,6 +618,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("F");
@@ -713,6 +629,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("G");
@@ -723,6 +640,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("H");
@@ -733,6 +651,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("J");
@@ -743,6 +662,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("K");
@@ -753,6 +673,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("L");
@@ -763,6 +684,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Z");
@@ -773,6 +695,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnZActionPerformed
 
     private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("X");
@@ -783,6 +706,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("C");
@@ -793,6 +717,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("V");
@@ -803,6 +728,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("B");
@@ -813,6 +739,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("N");
@@ -823,6 +750,7 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("M");
@@ -833,12 +761,30 @@ public class Wordle extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
-         System.out.println(word);
-        if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
-        //System.out.println(getWordfrompanels());
-        if(checkIfWordexists()==true){
-            
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = currj; j < 6; ++j)
+            {
+                Graphics g = pnlarr[i][j].getGraphics();
+                pnlarr[i][j].setBackground(new MyPanel().getBackground());
+            }
+        } 
+        try{
+         if (pnlarr[curri][currj].getComponentCount() == 0) return;
         }
+         catch(ArrayIndexOutOfBoundsException e){
+         }
+         
+        if(checkIfWordexists()==true){
+            paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
+            
+             
+            setJ(currj + 1);
+            setI(0); 
+          
+           
+        }
+         
         else{
             lblwordlist.setVisible(true);
              ActionListener taskperformer=new ActionListener() {
@@ -850,8 +796,26 @@ public class Wordle extends javax.swing.JFrame {
             };
             new javax.swing.Timer(3000, taskperformer).start();
         }
-        setJ(currj + 1);
-        setI(0);
+        
+        if(GetInfofromPanels.solved(pnlarr, currj, 5)){
+            
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(10, taskperformer).start();
+            
+         
+            new Goodgame().setVisible(true);
+
+        }
+       
+         
+        
+        
       
     }//GEN-LAST:event_btnENTActionPerformed
     
@@ -890,7 +854,7 @@ public class Wordle extends javax.swing.JFrame {
             }
         });
     }
-
+/*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnA;
     private javax.swing.JButton btnB;
@@ -922,8 +886,12 @@ public class Wordle extends javax.swing.JFrame {
     private javax.swing.JButton btnZ;
     private javax.swing.JButton jButton27;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblwordlist;
+    private javax.swing.JPanel pnlkeyboard;
     // End of variables declaration//GEN-END:variables
+*/
+
 }
+
+

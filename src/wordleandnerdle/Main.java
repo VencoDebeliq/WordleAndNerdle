@@ -4,16 +4,15 @@
  */
 package wordleandnerdle;
 
-import java.io.File;
 
 /**
  *
  * @author mac
  */
-public class Main {
+public class Main extends LOGIN{
     public static void main(String[] args) {
      
-        Wordle.Run();
+        Nerdle.Run();
         
     }
 }
