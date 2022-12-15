@@ -9,7 +9,7 @@ package wordleandnerdle;
  *
  * @author mac
  */
-public class Main {
+public class Main extends LOGIN{
     public static void main(String[] args) {
      
         Nerdle.Run();

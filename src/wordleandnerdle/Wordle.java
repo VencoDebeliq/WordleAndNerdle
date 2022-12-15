@@ -27,7 +27,7 @@ public class Wordle extends WordleMethods {
         Dimension size=obj.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         init_arr();
-         lblwordlist.setVisible(false);
+        lblwordlist.setVisible(false);
          
     }
     
@@ -456,6 +456,7 @@ public class Wordle extends WordleMethods {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Y");
@@ -466,6 +467,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("S");
@@ -476,14 +478,6 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        for (int i = 0; i < 5; ++i)
-        {
-            for (int j = 0; j < 6; ++j)
-            {
-                Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(new MyPanel().getBackground());
-            }
-        }
         if (pnlarr[curri][currj].getComponentCount() == 0)
             try
             {
@@ -503,6 +497,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnDELActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Q");
@@ -513,6 +508,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("W");
@@ -523,6 +519,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnWActionPerformed
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("E");
@@ -533,6 +530,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("R");
@@ -543,6 +541,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("T");
@@ -553,6 +552,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("U");
@@ -563,6 +563,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnUActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("I");
@@ -573,6 +574,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnIActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("O");
@@ -583,6 +585,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("P");
@@ -593,6 +596,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("A");
@@ -603,6 +607,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("D");
@@ -613,6 +618,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnDActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("F");
@@ -623,6 +629,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("G");
@@ -633,6 +640,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("H");
@@ -643,6 +651,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("J");
@@ -653,6 +662,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("K");
@@ -663,6 +673,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("L");
@@ -673,6 +684,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("Z");
@@ -683,6 +695,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnZActionPerformed
 
     private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("X");
@@ -693,6 +706,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnXActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("C");
@@ -703,6 +717,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("V");
@@ -713,6 +728,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("B");
@@ -723,6 +739,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("N");
@@ -733,6 +750,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("M");
@@ -743,8 +761,14 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
-         System.out.println(word);
-         //System.out.println(getWordfrompanels());
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = currj; j < 6; ++j)
+            {
+                Graphics g = pnlarr[i][j].getGraphics();
+                pnlarr[i][j].setBackground(new MyPanel().getBackground());
+            }
+        } 
         try{
          if (pnlarr[curri][currj].getComponentCount() == 0) return;
         }
@@ -753,12 +777,10 @@ public class Wordle extends WordleMethods {
          
         if(checkIfWordexists()==true){
             paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
-            if(getCounter()==true){
-                
-            }
+            
              
-           setJ(currj + 1);
-           setI(0); 
+            setJ(currj + 1);
+            setI(0); 
           
            
         }
@@ -774,6 +796,23 @@ public class Wordle extends WordleMethods {
             };
             new javax.swing.Timer(3000, taskperformer).start();
         }
+        
+        if(GetInfofromPanels.solved(pnlarr, currj, 5)){
+            
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(10, taskperformer).start();
+            
+         
+            new Goodgame().setVisible(true);
+
+        }
+       
          
         
         

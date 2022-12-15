@@ -9,8 +9,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
  *
  * @author mac
@@ -23,15 +22,18 @@ public class Nerdle extends NerdleMethods {
      */
     private final int dulzhyna=8;
     
+    
     public Nerdle() {
         super();
         setTitle("Nerdle");
         initComponents();
+        
         Toolkit obj=getToolkit();
         Dimension size=obj.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         init_arr();
         lblequation.setVisible(false);
+        
     }
    
     
@@ -43,7 +45,7 @@ public class Nerdle extends NerdleMethods {
         {
             for (int j = 0; j < m; ++j)
             {
-                pnlarr[i][j] = new javax.swing.JPanel();
+                pnlarr[i][j] = new MyPanel();
                 add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(15 + i * (35 + 18), 40 + j * (35 + 18), 35, 35);
             }
@@ -360,33 +362,52 @@ public class Nerdle extends NerdleMethods {
         {
             for (int j = currj; j < 6; ++j)
             {
-                pnlarr[i][j].setBackground(new MyPanel().getBackground());
+                pnlarr[i][j].repaint();
+                //pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
         }
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
         paint(GetInfofromPanels.getInput(pnlarr, currj,dulzhyna));
-        setJ(currj + 1);
-        setI(0);
-        // test
-        if(getCounter()==2){
-            try {
-                Thread.sleep(4000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Nerdle.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        System.out.println(currj);
+        if(GetInfofromPanels.solved(pnlarr, currj, 8)){
+            System.out.println("in if");
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(1000, taskperformer).start();
+            
+         
             new Goodgame().setVisible(true);
+
         }
-        else if(getCounter()==1){
-            try {
-                Thread.sleep(4000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Nerdle.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        else if (currj == 5)
+        {
+            System.out.println("in else");
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(1000, taskperformer).start();
+            
+         
             new Gameover().setVisible(true);
         }
+        setJ(currj + 1);
+        setI(0);
+        
+         
+       
     }//GEN-LAST:event_btnENTActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("1");
@@ -397,6 +418,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("3");
@@ -407,6 +429,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("5");
@@ -417,6 +440,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("6");
@@ -427,6 +451,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("7");
@@ -437,6 +462,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("8");
@@ -447,6 +473,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("9");
@@ -457,6 +484,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("0");
@@ -467,6 +495,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnPLUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPLUSActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("+");
@@ -477,6 +506,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btnPLUSActionPerformed
 
     private void btnMINUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMINUSActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("-");
@@ -487,6 +517,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btnMINUSActionPerformed
 
     private void btnMULTIPLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMULTIPLActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("*");
@@ -497,6 +528,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btnMULTIPLActionPerformed
 
     private void btnDIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDIVActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("/");
@@ -507,6 +539,7 @@ public class Nerdle extends NerdleMethods {
     }//GEN-LAST:event_btnDIVActionPerformed
 
     private void btnEQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEQActionPerformed
+        if (pnlarr[curri][currj].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
         pnlarr[curri][currj].add(lbl);
         lbl.setText("=");

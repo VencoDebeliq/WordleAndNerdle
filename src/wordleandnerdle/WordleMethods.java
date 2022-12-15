@@ -28,13 +28,13 @@ public class WordleMethods extends javax.swing.JFrame{
     protected int currj; // index of current panel
     protected String word;
     private FileReader fr;
-    protected boolean counter;
+    protected int counter;
     
-    protected void setCounter(boolean counter){
+    protected void setCounter(int counter){
         this.counter=counter;
     }
     
-    protected boolean getCounter(){
+    protected int getCounter(){
         return counter;
     }
     
@@ -147,16 +147,7 @@ public class WordleMethods extends javax.swing.JFrame{
             }
         }
            
-           int counter=0;
-           for (int i = 0; i < arrifperfmatch.length; i++) {
-              if (arrifperfmatch[i]==true) {
-                counter++;
-            }
-           
-          }
-           if(counter==5){
-               setCounter(true);
-           }
+          
            
             for (int i = 0; i < s.length(); ++i)
         {
@@ -169,10 +160,10 @@ public class WordleMethods extends javax.swing.JFrame{
             if (getBtnColor(s.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(s.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
             paintBtn(s.charAt(i), pnlarr[i][currj].getBackground());
         }
-        
-      }
-      
-       private void paintBtn(char c, Color col)
+    }
+    
+    
+    private void paintBtn(char c, Color col)
     {
         System.out.println("in paint btn");
         switch (c)

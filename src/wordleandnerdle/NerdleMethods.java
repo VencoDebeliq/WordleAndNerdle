@@ -31,8 +31,8 @@ public class NerdleMethods extends javax.swing.JFrame {
         if (currj < 0) return;
         if (currj < 6)
             this.currj = currj;
-        else
-            throw new RuntimeException("Out of bounds");
+        //else
+            //throw new RuntimeException("Out of bounds");
     }
     
     protected void setI(int curri) // setting curri variable
@@ -221,18 +221,21 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
             paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
         }
-        int count=0;
-        for (int i = 0; i <arrIsGreen.length; i++) {
+        int counter=0;
+        for (int i = 0; i < arrIsGreen.length; i++) {
             if(arrIsGreen[i]==true){
-                count++;
-            }  
+                counter++;
+            }
+            
         }
-        if(count==8){
+        if(counter==8){
             setCounter(2);
         }
-        else if(count!=8){
+        else{
             setCounter(1);
         }
+        
+        
     }
     
     private void paintBtn(char c, Color col)

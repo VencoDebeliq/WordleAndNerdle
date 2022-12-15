@@ -4,6 +4,7 @@
  */
 package wordleandnerdle;
 
+import java.awt.Color;
 import java.awt.Component;
 
 /**
@@ -27,5 +28,16 @@ public class GetInfofromPanels {
         //System.out.println(ans);
         return ans;
     }
-    
+    public static boolean solved(javax.swing.JPanel[][] pnlarr, int currj, int n)  
+    {
+        for (int i = 0; i < n; i++) {
+             if(!(pnlarr[i][currj].getBackground().getRGB() == (new Color(102, 255, 102)).getRGB()))
+             {
+                 return false;
+             }
+              
+        }
+        return true;
+    }
+         
 }
