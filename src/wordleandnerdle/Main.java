@@ -12,7 +12,7 @@ package wordleandnerdle;
 public class Main extends LOGIN{
     public static void main(String[] args) {
      
-        Run();
+        ENTRYPAGE.Run();
         
     }
 }
