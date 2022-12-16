@@ -765,24 +765,20 @@ public class Wordle extends WordleMethods {
         {
             for (int j = currj; j < 6; ++j)
             {
-                Graphics g = pnlarr[i][j].getGraphics();
-                pnlarr[i][j].setBackground(new MyPanel().getBackground());
+            Graphics g = pnlarr[i][j].getGraphics();
+            pnlarr[i][j].setBackground(new MyPanel().getBackground());
             }
         } 
         try{
-         if (pnlarr[curri][currj].getComponentCount() == 0) return;
+        if (pnlarr[curri][currj].getComponentCount() == 0) return;
         }
-         catch(ArrayIndexOutOfBoundsException e){
+        catch(ArrayIndexOutOfBoundsException e){
          }
          
         if(checkIfWordexists()==true){
-            paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
             
-             
-            setJ(currj + 1);
-            setI(0); 
+        paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
           
-           
         }
          
         else{
@@ -812,6 +808,23 @@ public class Wordle extends WordleMethods {
             new Goodgame().setVisible(true);
 
         }
+        else if (currj == 5)
+        {
+            System.out.println("in else");
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(1000, taskperformer).start();
+            
+         
+            new Gameover().setVisible(true);
+        }
+        setJ(currj + 1);
+        setI(0);
        
          
         
