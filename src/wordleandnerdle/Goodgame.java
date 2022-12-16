@@ -3,6 +3,10 @@ package wordleandnerdle;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static wordleandnerdle.Gameover.caseforpanel;
 import wordleandnerdle.Registersystem;
 
 /*
@@ -19,6 +23,7 @@ public class Goodgame extends javax.swing.JFrame {
     /**
      * Creates new form Goodgame
      */
+    
     public Goodgame() {
         initComponents();
         setTitle("GOOD GAME");
@@ -51,7 +56,7 @@ public class Goodgame extends javax.swing.JFrame {
 
         mainpnl.setBackground(new java.awt.Color(0, 153, 255));
 
-        lblExcellent.setFont(new java.awt.Font("Telugu MN", 2, 36)); // NOI18N
+        lblExcellent.setFont(new java.awt.Font("Baskerville", 3, 48)); // NOI18N
         lblExcellent.setForeground(new java.awt.Color(255, 255, 255));
         lblExcellent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExcellent.setText("Excellent!");
@@ -64,6 +69,11 @@ public class Goodgame extends javax.swing.JFrame {
         btnBacktomenu.setForeground(new java.awt.Color(255, 255, 255));
         btnBacktomenu.setText("BACK TO MENU");
         btnBacktomenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBacktomenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBacktomenuActionPerformed(evt);
+            }
+        });
 
         btnPlayagain.setBackground(new java.awt.Color(0, 153, 255));
         btnPlayagain.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,33 +90,33 @@ public class Goodgame extends javax.swing.JFrame {
         mainpnlLayout.setHorizontalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPlayagain, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBacktomenu))
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainpnlLayout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(lblExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainpnlLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 96, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(btnPlayagain, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(mainpnlLayout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                        .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                        .addComponent(lblExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151))))
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(66, 66, 66)
                 .addComponent(lblExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,7 +141,26 @@ public class Goodgame extends javax.swing.JFrame {
 
     private void btnPlayagainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayagainActionPerformed
         // TODO add your handling code here:
+        if(caseforpanel.length()>5){
+            dispose();
+            new Nerdle().setVisible(true);
+        }
+        else{
+            dispose();
+            try {
+                new Wordle().setVisible(true);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Gameover.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btnPlayagainActionPerformed
+
+    private void btnBacktomenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBacktomenuActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new ENTRYPAGE().setVisible(true);
+    }//GEN-LAST:event_btnBacktomenuActionPerformed
 
     /**
      * @param args the command line arguments

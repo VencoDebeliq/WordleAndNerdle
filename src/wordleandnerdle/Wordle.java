@@ -93,6 +93,7 @@ public class Wordle extends WordleMethods {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblwordlist.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
         lblwordlist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblwordlist.setText("NOT A WORD IN THE LIST");
         lblwordlist.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -101,10 +102,10 @@ public class Wordle extends WordleMethods {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -774,7 +775,7 @@ public class Wordle extends WordleMethods {
         }
         catch(ArrayIndexOutOfBoundsException e){
          }
-         
+         Gameover.setCase(word);
         if(checkIfWordexists()==true){
             
         paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));

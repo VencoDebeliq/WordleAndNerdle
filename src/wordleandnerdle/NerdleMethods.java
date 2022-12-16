@@ -12,19 +12,14 @@ import java.util.Random;
  * @author Ventsislav Peychev
  */
 public class NerdleMethods extends javax.swing.JFrame {
-    private String equation;
+    protected String equation;
     protected javax.swing.JPanel[][] pnlarr = new javax.swing.JPanel[8][6];
     protected int curri;
     protected int currj;
-    protected int counter;
+   
     
     
-    protected void setCounter(int counter){
-        this.counter=counter;
-    }
-    protected int getCounter(){
-        return counter;
-    }
+    
     
     protected void setJ(int currj) // setting currj variable
     {
@@ -221,20 +216,7 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
             paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
         }
-        int counter=0;
-        for (int i = 0; i < arrIsGreen.length; i++) {
-            if(arrIsGreen[i]==true){
-                counter++;
-            }
-            
-        }
-        if(counter==8){
-            setCounter(2);
-        }
-        else{
-            setCounter(1);
-        }
-        
+
         
     }
     

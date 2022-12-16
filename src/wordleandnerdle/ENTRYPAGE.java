@@ -29,7 +29,7 @@ public class ENTRYPAGE extends javax.swing.JFrame {
         Dimension size=obj.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
         String name = Registersystem.getUsername();
-        jLabel1.setText(String.format("Hello, %s", name));
+        lblplayer.setText(String.format("Hello, %s", name));
         
     }
 
@@ -43,7 +43,7 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     private void initComponents() {
 
         mainpnl = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblplayer = new javax.swing.JLabel();
         btnplaywordle = new javax.swing.JButton();
         btnplaynerdle = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -52,7 +52,9 @@ public class ENTRYPAGE extends javax.swing.JFrame {
 
         mainpnl.setBackground(new java.awt.Color(0, 153, 255));
 
-        jLabel1.setText("jLabel1");
+        lblplayer.setFont(new java.awt.Font("Baskerville", 3, 36)); // NOI18N
+        lblplayer.setForeground(new java.awt.Color(255, 255, 255));
+        lblplayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnplaywordle.setBackground(new java.awt.Color(51, 51, 51));
         btnplaywordle.addActionListener(new java.awt.event.ActionListener() {
@@ -74,27 +76,26 @@ public class ENTRYPAGE extends javax.swing.JFrame {
         mainpnlLayout.setHorizontalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnplaywordle, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(btnplaynerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
+                .addComponent(btnplaywordle, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(btnplaynerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(25, 25, 25)
+                .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnplaywordle, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnplaynerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +170,7 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     private javax.swing.JButton btnplaynerdle;
     private javax.swing.JButton btnplaywordle;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblplayer;
     private javax.swing.JPanel mainpnl;
     // End of variables declaration//GEN-END:variables
 }

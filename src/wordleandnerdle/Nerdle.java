@@ -275,7 +275,7 @@ public class Nerdle extends NerdleMethods {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblequation.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        lblequation.setFont(new java.awt.Font("InaiMathi", 1, 18)); // NOI18N
         lblequation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblequation.setText("NOT A PROPER EQUATION");
         lblequation.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -284,10 +284,10 @@ public class Nerdle extends NerdleMethods {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(lblequation, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblequation, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,8 +369,10 @@ public class Nerdle extends NerdleMethods {
         if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
         paint(GetInfofromPanels.getInput(pnlarr, currj,dulzhyna));
         System.out.println(currj);
+        
+        Gameover.setCase(equation);
         if(GetInfofromPanels.solved(pnlarr, currj, 8)){
-            System.out.println("in if");
+            
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -386,9 +388,10 @@ public class Nerdle extends NerdleMethods {
         }
         else if (currj == 5)
         {
-            System.out.println("in else");
+            
+            
             ActionListener taskperformer=new ActionListener() {
-                @Override
+                
                 public void actionPerformed(ActionEvent e) {
                     setVisible(false);
 
