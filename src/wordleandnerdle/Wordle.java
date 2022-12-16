@@ -791,6 +791,7 @@ public class Wordle extends WordleMethods {
                 }
             };
             new javax.swing.Timer(3000, taskperformer).start();
+            return;
         }
         
         if(GetInfofromPanels.solved(pnlarr, currj, 5)){
