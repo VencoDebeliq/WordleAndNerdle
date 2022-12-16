@@ -25,7 +25,7 @@ public class Wordle extends WordleMethods {
         initComponents(); 
         Toolkit obj=getToolkit();
         Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 200);
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 300);
         init_arr();
         lblwordlist.setVisible(false);
          

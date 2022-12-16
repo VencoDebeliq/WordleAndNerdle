@@ -6,6 +6,8 @@ package wordleandnerdle;
 
 import java.awt.Color;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -143,6 +145,13 @@ public class NerdleMethods extends javax.swing.JFrame {
         return ans;
     }
     
+    private boolean is_number(String s)
+    {
+        Pattern p = Pattern.compile("\\d{1}");
+        Matcher m = p.matcher(s);
+        return m.matches();
+    }
+    
     protected void paintPanels(String eq)
     {
         boolean arrIsGreen[] = new boolean[8];
@@ -150,7 +159,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         for (int i = 0; i < equation.length(); ++i)
         {
             pnlarr[i][currj].getComponent(0).setForeground(Color.white);
-            if (!(equation.charAt(i) >= '0' && equation.charAt(i) <= '9'))
+            if (!is_number(equation.charAt(i) + ""))
             {
                 continue;
             }
@@ -166,7 +175,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         for (int i = 0; i < equation.length(); ++i)
         {
             if (arrIsGreen[i]) continue;
-            if (!(eq.charAt(i) >= '0' && eq.charAt(i) <= '9')) continue;
+            if (!is_number(eq.charAt(i) + "")) continue;
             if (countNums[(eq.charAt(i) - '0')] == 0)
             {
                 pnlarr[i][currj].setBackground(Color.gray);
@@ -179,7 +188,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         } // for za lilavi i cherni cifri
         for (int i = 0; i < eq.length(); ++i)
         {
-            if (eq.charAt(i) >= '0' && eq.charAt(i) <= '9') continue;
+            if (is_number(eq.charAt(i) + "")) continue;
             boolean ok = true;
             for (int j = 0; j < equation.length(); ++j)
             {
