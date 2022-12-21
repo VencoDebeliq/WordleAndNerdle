@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 
 
@@ -25,11 +27,11 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     public ENTRYPAGE() {
         initComponents();
         setResizable(false);
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 100);
+        setLocationRelativeTo(null);
+        lbliconwordle.setIcon(new ImageIcon("wordle.jpg"));
+        lbliconnerdle.setIcon(new ImageIcon("nerdle.jpg"));
         String name = Registersystem.getUsername();
-        lblplayer.setText(String.format("Hello, %s", name));
+        lblplayer.setText(String.format("Hello, %s!", name));
         
     }
 
@@ -43,63 +45,126 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     private void initComponents() {
 
         mainpnl = new javax.swing.JPanel();
-        lblplayer = new javax.swing.JLabel();
-        btnplaywordle = new javax.swing.JButton();
-        btnplaynerdle = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblplayer = new javax.swing.JLabel();
+        lblclose = new javax.swing.JLabel();
+        lblminimise = new javax.swing.JLabel();
+        lbliconwordle = new javax.swing.JLabel();
+        lbliconnerdle = new javax.swing.JLabel();
+        lblchoose = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
-        mainpnl.setBackground(new java.awt.Color(0, 153, 255));
+        mainpnl.setBackground(new java.awt.Color(51, 51, 51));
+
+        jButton1.setText("Ranklist");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
 
         lblplayer.setFont(new java.awt.Font("Baskerville", 3, 36)); // NOI18N
         lblplayer.setForeground(new java.awt.Color(255, 255, 255));
         lblplayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        btnplaywordle.setBackground(new java.awt.Color(51, 51, 51));
-        btnplaywordle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnplaywordleActionPerformed(evt);
+        lblclose.setFont(new java.awt.Font("Baskerville", 3, 36)); // NOI18N
+        lblclose.setForeground(new java.awt.Color(255, 255, 255));
+        lblclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblclose.setText("X");
+        lblclose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblcloseMouseClicked(evt);
             }
         });
 
-        btnplaynerdle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnplaynerdleActionPerformed(evt);
+        lblminimise.setFont(new java.awt.Font("Baskerville", 3, 36)); // NOI18N
+        lblminimise.setForeground(new java.awt.Color(255, 255, 255));
+        lblminimise.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblminimise.setText("-");
+        lblminimise.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblminimiseMouseClicked(evt);
             }
         });
 
-        jButton1.setText("Ranklist");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblminimise, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblclose, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblclose, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblminimise, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        lbliconwordle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbliconwordleMouseClicked(evt);
+            }
+        });
+
+        lbliconnerdle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbliconnerdleMouseClicked(evt);
+            }
+        });
+
+        lblchoose.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 24)); // NOI18N
+        lblchoose.setForeground(new java.awt.Color(255, 255, 255));
+        lblchoose.setText("WHICH GAME DO YOU WANT TO PLAY?");
 
         javax.swing.GroupLayout mainpnlLayout = new javax.swing.GroupLayout(mainpnl);
         mainpnl.setLayout(mainpnlLayout);
         mainpnlLayout.setHorizontalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(btnplaywordle, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(btnplaynerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainpnlLayout.createSequentialGroup()
+                        .addContainerGap(74, Short.MAX_VALUE)
+                        .addComponent(lbliconwordle, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbliconnerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainpnlLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblchoose)
+                .addGap(80, 80, 80))
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblplayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnplaywordle, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnplaynerdle, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(lblchoose)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbliconnerdle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbliconwordle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -112,27 +177,40 @@ public class ENTRYPAGE extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainpnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainpnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnplaywordleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaywordleActionPerformed
-        // TODO add your handling code here:
-        dispose();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lblminimiseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimiseMouseClicked
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblminimiseMouseClicked
+
+    private void lblcloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcloseMouseClicked
+        System.exit(0);
+       
+    }//GEN-LAST:event_lblcloseMouseClicked
+
+    private void lbliconwordleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbliconwordleMouseClicked
         try {
+            // TODO add your handling code here:
+            dispose();
             new Wordle().setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ENTRYPAGE.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnplaywordleActionPerformed
+    }//GEN-LAST:event_lbliconwordleMouseClicked
 
-    private void btnplaynerdleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplaynerdleActionPerformed
+    private void lbliconnerdleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbliconnerdleMouseClicked
         // TODO add your handling code here:
         dispose();
         new Nerdle().setVisible(true);
-    }//GEN-LAST:event_btnplaynerdleActionPerformed
+    }//GEN-LAST:event_lbliconnerdleMouseClicked
 
     public static void Run() {
         /* Set the Nimbus look and feel */
@@ -167,9 +245,13 @@ public class ENTRYPAGE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnplaynerdle;
-    private javax.swing.JButton btnplaywordle;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblchoose;
+    private javax.swing.JLabel lblclose;
+    private javax.swing.JLabel lbliconnerdle;
+    private javax.swing.JLabel lbliconwordle;
+    private javax.swing.JLabel lblminimise;
     private javax.swing.JLabel lblplayer;
     private javax.swing.JPanel mainpnl;
     // End of variables declaration//GEN-END:variables

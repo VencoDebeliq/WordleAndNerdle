@@ -168,7 +168,7 @@ public class WordleMethods extends javax.swing.JFrame{
                 btnE.setForeground(Color.white);
                 btnE.setBackground(col);
                 break;
-            case 'F':
+            case 'f':
                 btnF.setForeground(Color.white);
                 btnF.setBackground(col);
                 break;
@@ -303,7 +303,7 @@ public class WordleMethods extends javax.swing.JFrame{
                 return btnV.getBackground();
             case 'x':
                 return btnX.getBackground();
-                case 'w':
+            case 'w':
                 return btnW.getBackground();
             case 'y':
                 return btnY.getBackground();

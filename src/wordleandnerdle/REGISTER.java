@@ -10,9 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 
 
@@ -21,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author mac
  */
-public class REGISTER extends javax.swing.JFrame {
+public class REGISTER extends javax.swing.JFrame{
 
     /**
      * Creates new form REGISTER
@@ -30,11 +28,8 @@ public class REGISTER extends javax.swing.JFrame {
     public REGISTER() {
         initComponents();
         setResizable(false);
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
+        setLocationRelativeTo(null);
         notlbl.setVisible(false);
-        notlbl2.setVisible(false);
         setTitle("REGISTRATION");
         
     }
@@ -49,32 +44,37 @@ public class REGISTER extends javax.swing.JFrame {
     private void initComponents() {
 
         mainpnl = new javax.swing.JPanel();
-        lblregister = new javax.swing.JLabel();
         lblusername = new javax.swing.JLabel();
         lblpassword = new javax.swing.JLabel();
         txtfldusername = new javax.swing.JTextField();
         btnregisternow = new javax.swing.JButton();
         notlbl = new javax.swing.JLabel();
-        notlbl2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         pswrdfldregister = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel();
+        lblminimise = new javax.swing.JLabel();
+        lblregister1 = new javax.swing.JLabel();
+        lblclose = new javax.swing.JLabel();
+        lblgoback = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
-        mainpnl.setBackground(new java.awt.Color(0, 153, 255));
+        mainpnl.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblregister.setFont(new java.awt.Font("Apple Braille", 2, 24)); // NOI18N
-        lblregister.setForeground(new java.awt.Color(255, 255, 255));
-        lblregister.setText("REGISTER");
-
+        lblusername.setFont(new java.awt.Font("Apple Braille", 3, 18)); // NOI18N
         lblusername.setForeground(new java.awt.Color(255, 255, 255));
         lblusername.setText("Username:");
 
+        lblpassword.setFont(new java.awt.Font("Apple Braille", 3, 18)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(255, 255, 255));
         lblpassword.setText("Password:");
 
+        txtfldusername.setBackground(new java.awt.Color(153, 153, 153));
+        txtfldusername.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+
         btnregisternow.setBackground(new java.awt.Color(0, 153, 255));
-        btnregisternow.setFont(new java.awt.Font("Apple Braille", 2, 13)); // NOI18N
+        btnregisternow.setFont(new java.awt.Font("Al Nile", 1, 14)); // NOI18N
         btnregisternow.setForeground(new java.awt.Color(255, 255, 255));
         btnregisternow.setText("REGISTER NOW");
         btnregisternow.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -84,79 +84,112 @@ public class REGISTER extends javax.swing.JFrame {
             }
         });
 
+        notlbl.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
         notlbl.setForeground(new java.awt.Color(255, 255, 255));
-        notlbl.setText("THE USERNAME OR PASSWORD IS ALREADY TAKEN");
+        notlbl.setText("THE USERNAME IS ALREADY TAKEN");
 
-        notlbl2.setForeground(new java.awt.Color(255, 255, 255));
-        notlbl2.setText("SUCCESFULL REGISTRATION");
+        pswrdfldregister.setBackground(new java.awt.Color(153, 153, 153));
+        pswrdfldregister.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("GO BACK");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
+
+        lblminimise.setFont(new java.awt.Font("Apple Braille", 2, 24)); // NOI18N
+        lblminimise.setForeground(new java.awt.Color(255, 255, 255));
+        lblminimise.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblminimise.setText("-");
+        lblminimise.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblminimiseMouseClicked(evt);
             }
         });
+
+        lblregister1.setFont(new java.awt.Font("Apple Braille", 2, 24)); // NOI18N
+        lblregister1.setForeground(new java.awt.Color(255, 255, 255));
+        lblregister1.setText("REGISTER");
+
+        lblclose.setFont(new java.awt.Font("Apple Braille", 2, 24)); // NOI18N
+        lblclose.setForeground(new java.awt.Color(255, 255, 255));
+        lblclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblclose.setText("X");
+        lblclose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblcloseMouseClicked(evt);
+            }
+        });
+
+        lblgoback.setFont(new java.awt.Font("Apple Braille", 2, 24)); // NOI18N
+        lblgoback.setForeground(new java.awt.Color(255, 255, 255));
+        lblgoback.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblgoback.setText("<-");
+        lblgoback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblgobackMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblregister1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addComponent(lblgoback, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblminimise, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblclose, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblregister1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblminimise, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblclose, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblgoback, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout mainpnlLayout = new javax.swing.GroupLayout(mainpnl);
         mainpnl.setLayout(mainpnlLayout);
         mainpnlLayout.setHorizontalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(notlbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notlbl))
-                .addGap(17, 17, 17))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainpnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(53, 53, 53)
+                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(notlbl)
                     .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addComponent(lblusername)
-                        .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainpnlLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblregister, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89))
-                            .addGroup(mainpnlLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtfldusername, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(mainpnlLayout.createSequentialGroup()
-                        .addComponent(lblpassword)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pswrdfldregister, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblpassword)
+                            .addComponent(lblusername))
+                        .addGap(18, 18, 18)
+                        .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtfldusername, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                            .addComponent(pswrdfldregister)))
+                    .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainpnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblregister, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(notlbl)
+                .addGap(39, 39, 39)
                 .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblusername)
-                    .addComponent(txtfldusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(txtfldusername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblusername))
+                .addGap(33, 33, 33)
                 .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblpassword)
-                    .addComponent(pswrdfldregister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pswrdfldregister, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(notlbl2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(notlbl)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,8 +208,8 @@ public class REGISTER extends javax.swing.JFrame {
 
     private void btnregisternowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisternowActionPerformed
         // TODO add your handling code here:
-        int delay=7000;
-        Registersystem obj = new Registersystem();
+        int delay=3000;
+        Registersystem obj;
         try
         {
             obj=new Registersystem(txtfldusername.getText(),pswrdfldregister.getText());
@@ -196,9 +229,10 @@ public class REGISTER extends javax.swing.JFrame {
             
             return;
         }
+        
         ReadandWrite obj1=new ReadandWrite();
   
-        if(obj1.checkIfexisting(obj)==false){
+        if(obj1.checkIfMatchRegister(obj)==false){
             notlbl.setVisible(true);
             ActionListener taskperformer=new ActionListener() {
                 @Override
@@ -212,16 +246,14 @@ public class REGISTER extends javax.swing.JFrame {
         }
         else{
             try {
-                obj1.setinfotofile(obj);
-                    notlbl2.setVisible(true);
-                    dispose();
-                    new LOGIN().setVisible(true);                        
+                obj1.setinfotoFiles(obj);
+                dispose();
+                new LOGIN().setVisible(true);
+                
+                
+              
                 }
-                catch (IOException e) {
-                    
-                }
-                catch (RuntimeException re)
-                {
+                catch (IOException | RuntimeException e) {
                     
                 }
                 
@@ -229,10 +261,20 @@ public class REGISTER extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_btnregisternowActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      dispose();
+    private void lblcloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcloseMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblcloseMouseClicked
+
+    private void lblminimiseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimiseMouseClicked
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblminimiseMouseClicked
+
+    private void lblgobackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblgobackMouseClicked
+
+        dispose();
       new LOGIN().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+      
+    }//GEN-LAST:event_lblgobackMouseClicked
 
     public static void Run() {
         /* Set the Nimbus look and feel */
@@ -268,13 +310,15 @@ public class REGISTER extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnregisternow;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblclose;
+    private javax.swing.JLabel lblgoback;
+    private javax.swing.JLabel lblminimise;
     private javax.swing.JLabel lblpassword;
-    private javax.swing.JLabel lblregister;
+    private javax.swing.JLabel lblregister1;
     private javax.swing.JLabel lblusername;
     private javax.swing.JPanel mainpnl;
     private javax.swing.JLabel notlbl;
-    private javax.swing.JLabel notlbl2;
     private javax.swing.JPasswordField pswrdfldregister;
     private javax.swing.JTextField txtfldusername;
     // End of variables declaration//GEN-END:variables

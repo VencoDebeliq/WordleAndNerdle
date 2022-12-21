@@ -4,24 +4,15 @@
  */
 package wordleandnerdle;
 
-import wordleandnerdle.REGISTER;
 
 
 public class Registersystem extends REGISTER {
     
     private static String username;
     private static String password;
-    private static int points;
   
-    public void setPoints(int points)
-    {
-        if (points >= 0) this.points = points;
-    }
-    
-    public static int getPoints()
-    {
-        return points;
-    }
+  
+  
     
     private boolean is_ok(String s)
     {
@@ -58,18 +49,14 @@ public class Registersystem extends REGISTER {
         return password;
     }
     
-    public Registersystem(String username, String password, int points)
+    public Registersystem(String username, String password)
     {
         setUsername(username);
         setPassword(password);
-        setPoints(points);
+        
     }
     
-    public Registersystem(String username,String password){
-        setUsername(username);
-        setPassword(password);
-        setPoints(0);
-    }
+   
     
     public Registersystem()
     {

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 public class Wordle extends WordleMethods {
     
    private final int dulzhina = 5;
+   
    
     public Wordle() throws FileNotFoundException {
         super();
@@ -790,7 +792,15 @@ public class Wordle extends WordleMethods {
         paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));    
         
         if(GetInfofromPanels.solved(pnlarr, currj, 5)){
-            
+            GetInfofromPanels info=new GetInfofromPanels();
+            info.setRow(6-currj);
+           
+            try {
+                ReadandWrite obj=new ReadandWrite();
+                obj.setnewPoints(GetInfofromPanels.getRow());
+            } catch (IOException ex) {
+                Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -799,11 +809,17 @@ public class Wordle extends WordleMethods {
                 }
             };
             new javax.swing.Timer(1500, taskperformer).start();
-            new Goodgame().setVisible(true);
+            try {
+                new Goodgame().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return;
         }
         else if (currj == 5)
         {
+            
+            Gameover.setANswer(word);
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -817,7 +833,7 @@ public class Wordle extends WordleMethods {
         }
         else if (currj == 5)
         {
-            System.out.println("in else");
+           
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

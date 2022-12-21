@@ -9,6 +9,9 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -367,6 +370,15 @@ public class Nerdle extends NerdleMethods {
         paintPanels(GetInfofromPanels.getInput(pnlarr, currj,dulzhina));
         
         if (GetInfofromPanels.solved(pnlarr, currj, 8)){
+            GetInfofromPanels info=new GetInfofromPanels();
+            info.setRow(6-currj);
+           
+            try {
+                ReadandWrite obj=new ReadandWrite();
+                obj.setnewPoints(GetInfofromPanels.getRow());
+            } catch (IOException ex) {
+                Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -375,11 +387,16 @@ public class Nerdle extends NerdleMethods {
                 }
             };
             new javax.swing.Timer(1500, taskperformer).start();
-            new Goodgame().setVisible(true);
+            try {
+                new Goodgame().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Nerdle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return;
         }
         else if (currj == 5)
         {
+            Gameover.setANswer(equation);
             ActionListener taskperformer=new ActionListener() {
                 
                 public void actionPerformed(ActionEvent e) {
