@@ -350,6 +350,12 @@ public class WordleMethods extends javax.swing.JFrame{
     protected javax.swing.JPanel jPanel3;
     protected javax.swing.JLabel lblwordlist;
     protected javax.swing.JPanel pnlkeyboard;
+     protected javax.swing.JPanel jPanel2;
+     protected javax.swing.JLabel jLabel1;
+     protected javax.swing.JLabel jLabel2;
+     protected javax.swing.JLabel jLabel3;
+     protected javax.swing.JLabel jLabel4;
+   
     
      
 }

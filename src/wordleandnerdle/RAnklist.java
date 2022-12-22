@@ -21,6 +21,7 @@ public class RAnklist extends javax.swing.JFrame {
         edpnranks.setEditable(false);
         lblyoupos.setText(String.format("YOU ARE CURRENTLY IN %d POSITION",ReadandWrite.getPos()));
         
+        
     }
 
     /**
