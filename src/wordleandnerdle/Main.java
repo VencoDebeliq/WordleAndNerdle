@@ -4,15 +4,17 @@
  */
 package wordleandnerdle;
 
+import java.io.IOException;
+
 
 /**
  *
  * @author mac
  */
-public class Main extends LOGIN{
-    public static void main(String[] args) {
+public class Main extends LOGIN {
+    public static void main(String[] args) throws IOException {
      
-        ENTRYPAGE.Run();
+        Run();
         
     }
 }

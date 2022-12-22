@@ -4,36 +4,33 @@
  */
 package wordleandnerdle;
 
+
 import wordleandnerdle.REGISTER;
+import java.util.regex.*;
 
 
 public class Registersystem extends REGISTER {
     
     private static String username;
     private static String password;
-    private static int points;
   
-    public void setPoints(int points)
+  
+  
+    
+    private boolean username_checker(String s)
     {
-        if (points >= 0) this.points = points;
+        Pattern p = Pattern.compile("^[a-zA-Z][\\w]{0,9}");
+        return p.matcher(s).matches();
     }
     
-    public static int getPoints()
+    private boolean password_checker(String s)
     {
-        return points;
-    }
-    
-    private boolean is_ok(String s)
-    {
-        for (int i = 0; i < s.length(); ++i)
-        {
-            if (s.charAt(i) == ' ') return false;
-        }
-        return true && s != null && s.length() != 0;
+        Pattern p = Pattern.compile("^[a-zA-Z0-9][\\w@#$!]{0,9}");
+        return p.matcher(s).matches();
     }
     
     public  void setUsername(String username){
-        if(is_ok(username)){
+        if(username_checker(username)){
             this.username=username;
         }
         else
@@ -46,7 +43,7 @@ public class Registersystem extends REGISTER {
         return username;
     }
     public void setPassword(String password){
-        if(is_ok(password)){
+        if(password_checker(password)){
             this.password=password;
         }
         else
@@ -58,22 +55,18 @@ public class Registersystem extends REGISTER {
         return password;
     }
     
-    public Registersystem(String username, String password, int points)
+    public Registersystem(String username, String password)
     {
         setUsername(username);
         setPassword(password);
-        setPoints(points);
+        
     }
     
-    public Registersystem(String username,String password){
-        setUsername(username);
-        setPassword(password);
-        setPoints(0);
-    }
+   
     
     public Registersystem()
     {
-        this("_", "_");
+        this("a", "a");
     }
     
     
