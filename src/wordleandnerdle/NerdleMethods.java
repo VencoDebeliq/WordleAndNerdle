@@ -140,7 +140,7 @@ public class NerdleMethods extends javax.swing.JFrame {
             }
             if (ans.length() <= 6) System.out.println("Less than 6");
         }
-        System.out.println(ans);
+        //System.out.println(ans);
         return ans;
     }
     

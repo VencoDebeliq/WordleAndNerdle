@@ -52,7 +52,6 @@ public class Goodgame extends javax.swing.JFrame {
         lblscore = new javax.swing.JLabel();
         lbltotalscore = new javax.swing.JLabel();
         btnBacktomenu = new javax.swing.JButton();
-        btnPlayagain = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -81,16 +80,6 @@ public class Goodgame extends javax.swing.JFrame {
         btnBacktomenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBacktomenuActionPerformed(evt);
-            }
-        });
-
-        btnPlayagain.setBackground(new java.awt.Color(0, 153, 0));
-        btnPlayagain.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlayagain.setText("PLAY AGAIN");
-        btnPlayagain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPlayagain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayagainActionPerformed(evt);
             }
         });
 
@@ -154,9 +143,9 @@ public class Goodgame extends javax.swing.JFrame {
                     .addComponent(lbltotalscore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblscore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainpnlLayout.createSequentialGroup()
-                        .addComponent(btnPlayagain, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(208, 208, 208)
+                        .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         mainpnlLayout.setVerticalGroup(
@@ -167,11 +156,9 @@ public class Goodgame extends javax.swing.JFrame {
                 .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnPlayagain, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
-                    .addComponent(btnBacktomenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,16 +174,6 @@ public class Goodgame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPlayagainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayagainActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        try {
-            new Wordle().setVisible(true);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Goodgame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnPlayagainActionPerformed
 
     private void btnBacktomenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBacktomenuActionPerformed
         // TODO add your handling code here:
@@ -223,7 +200,6 @@ public class Goodgame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBacktomenu;
-    private javax.swing.JButton btnPlayagain;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
