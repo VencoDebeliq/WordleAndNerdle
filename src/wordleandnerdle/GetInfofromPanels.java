@@ -13,6 +13,16 @@ import java.awt.Component;
  */
 public class GetInfofromPanels {
     
+    private static int rowsloved;
+    
+    public void setRow(int row){
+        this.rowsloved=row;
+    }
+    
+    public static int getRow(){
+        return rowsloved;
+    }
+    
     public static String getInput(javax.swing.JPanel[][] pnlarr, int currj,int n)
     {
         String s = "";
@@ -39,5 +49,7 @@ public class GetInfofromPanels {
         }
         return true;
     }
+    
+    
          
 }
