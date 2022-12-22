@@ -4,6 +4,7 @@
  */
 package wordleandnerdle;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -20,6 +21,7 @@ public class RAnklist extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         edpnranks.setText(ReadandWrite.getStandings());
         edpnranks.setEditable(false);
+        edpnranks.setForeground(Color.black);
         lblyoupos.setText(String.format("YOU ARE CURRENTLY IN %d POSITION",ReadandWrite.getPos()));
         
         
