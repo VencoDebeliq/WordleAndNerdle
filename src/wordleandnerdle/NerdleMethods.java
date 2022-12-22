@@ -139,7 +139,7 @@ public class NerdleMethods extends javax.swing.JFrame {
             }
             if (ans.length() <= 6) System.out.println("Less than 6");
         }
-        System.out.println(ans);
+        //System.out.println(ans);
         return ans;
     }
     
@@ -347,4 +347,10 @@ public class NerdleMethods extends javax.swing.JFrame {
     protected javax.swing.JPanel jPanel1;
     protected javax.swing.JPanel jPanel2;
     protected javax.swing.JLabel lblequation;
+    protected javax.swing.JPanel jPanel3;
+    protected javax.swing.JLabel jLabel1;
+    protected javax.swing.JLabel jLabel2;
+    protected javax.swing.JLabel jLabel3;
+    protected javax.swing.JLabel jLabel4;
 }
+

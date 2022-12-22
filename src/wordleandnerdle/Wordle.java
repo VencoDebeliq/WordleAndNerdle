@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,13 +21,12 @@ public class Wordle extends WordleMethods {
     
    private final int dulzhina = 5;
    
+   
     public Wordle() throws FileNotFoundException {
         super();
         setTitle("Wordle");
-        initComponents(); 
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 300);
+        initComponents();
+        setLocationRelativeTo(null);
         init_arr();
         lblwordlist.setVisible(false);
          
@@ -41,7 +42,7 @@ public class Wordle extends WordleMethods {
             {
                 pnlarr[i][j] = new MyPanel();
                 add(pnlarr[i][j]);
-                pnlarr[i][j].setBounds(55 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
+                pnlarr[i][j].setBounds(55 + i * (51 + 20), 115 + j * (51 + 20), 51, 51);
             }
         }
     }
@@ -59,6 +60,11 @@ public class Wordle extends WordleMethods {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         lblwordlist = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnlkeyboard = new javax.swing.JPanel();
         btnQ = new javax.swing.JButton();
         btnW = new javax.swing.JButton();
@@ -93,26 +99,100 @@ public class Wordle extends WordleMethods {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        lblwordlist.setBackground(new java.awt.Color(204, 0, 0));
         lblwordlist.setFont(new java.awt.Font("Oriya MN", 1, 18)); // NOI18N
+        lblwordlist.setForeground(new java.awt.Color(255, 0, 0));
         lblwordlist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblwordlist.setText("NOT A WORD IN THE LIST");
         lblwordlist.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jPanel2.setBackground(new java.awt.Color(248, 148, 6));
+
+        jLabel1.setFont(new java.awt.Font("Herculanum", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("X");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Herculanum", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("WORDLE");
+
+        jLabel3.setFont(new java.awt.Font("Herculanum", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("-");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Herculanum", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("<-");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(107, 107, 107))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addGap(88, 88, 88))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 447, Short.MAX_VALUE)
-                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 461, Short.MAX_VALUE)
+                .addComponent(lblwordlist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        pnlkeyboard.setBackground(new java.awt.Color(51, 51, 51));
 
         btnQ.setText("Q");
         btnQ.addActionListener(new java.awt.event.ActionListener() {
@@ -484,7 +564,7 @@ public class Wordle extends WordleMethods {
             {
                 pnlarr[curri - 1][currj] = new MyPanel();
                 add(pnlarr[curri - 1][currj]);
-                pnlarr[curri - 1][currj].setBounds(55 + (curri - 1) * (51 + 20), 15 + currj * (51 + 20), 51, 51);
+                pnlarr[curri - 1][currj].setBounds(55 + (curri - 1) * (51 + 20), 115 + currj * (51 + 20), 51, 51);
                 setI(curri - 1);
             }
             catch (RuntimeException e){}
@@ -492,7 +572,7 @@ public class Wordle extends WordleMethods {
         {
             pnlarr[curri][currj] = new MyPanel();
             add(pnlarr[curri][currj]);
-            pnlarr[curri][currj].setBounds(55 + curri * (51 + 20), 15 + currj * (51 + 20), 51, 51);
+            pnlarr[curri][currj].setBounds(55 + curri * (51 + 20), 115 + currj * (51 + 20), 51, 51);
         }
     }//GEN-LAST:event_btnDELActionPerformed
 
@@ -790,7 +870,16 @@ public class Wordle extends WordleMethods {
         paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));    
         
         if(GetInfofromPanels.solved(pnlarr, currj, 5)){
-            
+            GetInfofromPanels info=new GetInfofromPanels();
+            info.setRow(6-currj);
+           
+            try {
+                ReadandWrite obj=new ReadandWrite();
+                //obj.setnewPoints(GetInfofromPanels.getRow());
+                obj.convertALtoHM(GetInfofromPanels.getRow(),Registersystem.getUsername());
+            } catch (IOException ex) {
+                Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -799,11 +888,17 @@ public class Wordle extends WordleMethods {
                 }
             };
             new javax.swing.Timer(1500, taskperformer).start();
-            new Goodgame().setVisible(true);
+            try {
+                new Goodgame().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return;
         }
         else if (currj == 5)
         {
+            
+            Gameover.setANswer(word);
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -815,9 +910,41 @@ public class Wordle extends WordleMethods {
             new Gameover().setVisible(true);
             return;
         }
+        else if (currj == 5)
+        {
+           
+            ActionListener taskperformer=new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    setVisible(false);
+
+                }
+            };
+            new javax.swing.Timer(1000, taskperformer).start();
+            
+         
+            new Gameover().setVisible(true);
+        }
         setJ(currj + 1);
-        setI(0);    
+        setI(0);
+
     }//GEN-LAST:event_btnENTActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new ENTRYPAGE().setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
     
     public static void Run() {
         /* Set the Nimbus look and feel */
@@ -885,7 +1012,12 @@ public class Wordle extends WordleMethods {
     private javax.swing.JButton btnY;
     private javax.swing.JButton btnZ;
     private javax.swing.JButton jButton27;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblwordlist;
     private javax.swing.JPanel pnlkeyboard;

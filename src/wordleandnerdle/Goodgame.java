@@ -1,12 +1,8 @@
 package wordleandnerdle;
 
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static wordleandnerdle.Gameover.caseforpanel;
+import java.io.IOException;
+import javax.swing.JFrame;
 import wordleandnerdle.Registersystem;
 
 /*
@@ -22,17 +18,18 @@ public class Goodgame extends javax.swing.JFrame {
 
     /**
      * Creates new form Goodgame
+     * @throws java.io.IOException
      */
-    
-    public Goodgame() {
+   
+    public Goodgame() throws IOException {
         initComponents();
         setTitle("GOOD GAME");
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
+        setLocationRelativeTo(null);
         String name=Registersystem.getUsername();
-        lblscore.setText(String.format("%s, YOU GET %d POINTS!",name,0));
-        lbltotalscore.setText(String.format("YOU HAVE %d POINTS",0));
+        int row=GetInfofromPanels.getRow();
+        int totalpoints=ReadandWrite.getPoints();
+        lblscore.setText(String.format("%s, YOU GET %d POINTS!",name,row));
+        lbltotalscore.setText(String.format("YOU HAVE %d POINTS",totalpoints));
         
     }
 
@@ -45,25 +42,31 @@ public class Goodgame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         mainpnl = new javax.swing.JPanel();
-        lblExcellent = new javax.swing.JLabel();
         lblscore = new javax.swing.JLabel();
         lbltotalscore = new javax.swing.JLabel();
         btnBacktomenu = new javax.swing.JButton();
-        btnPlayagain = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
-        mainpnl.setBackground(new java.awt.Color(0, 153, 255));
+        mainpnl.setBackground(new java.awt.Color(51, 51, 51));
 
-        lblExcellent.setFont(new java.awt.Font("Baskerville", 3, 48)); // NOI18N
-        lblExcellent.setForeground(new java.awt.Color(255, 255, 255));
-        lblExcellent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblExcellent.setText("Excellent!");
-
+        lblscore.setFont(new java.awt.Font("Herculanum", 0, 48)); // NOI18N
         lblscore.setForeground(new java.awt.Color(255, 255, 255));
+        lblscore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        lbltotalscore.setFont(new java.awt.Font("Herculanum", 0, 36)); // NOI18N
         lbltotalscore.setForeground(new java.awt.Color(255, 255, 255));
+        lbltotalscore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnBacktomenu.setBackground(new java.awt.Color(0, 153, 255));
         btnBacktomenu.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,54 +78,82 @@ public class Goodgame extends javax.swing.JFrame {
             }
         });
 
-        btnPlayagain.setBackground(new java.awt.Color(0, 153, 255));
-        btnPlayagain.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlayagain.setText("PLAY AGAIN");
-        btnPlayagain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnPlayagain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayagainActionPerformed(evt);
+        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
+
+        jLabel1.setFont(new java.awt.Font("Herculanum", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("EXCELLENT! ;)");
+
+        jLabel2.setFont(new java.awt.Font("Herculanum", 0, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("x");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Herculanum", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("-");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout mainpnlLayout = new javax.swing.GroupLayout(mainpnl);
         mainpnl.setLayout(mainpnlLayout);
         mainpnlLayout.setHorizontalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainpnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPlayagain, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(mainpnlLayout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                        .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                        .addComponent(lblExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))))
+                .addContainerGap()
+                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbltotalscore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblscore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainpnlLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(lblExcellent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addComponent(lblscore, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(39, 39, 39)
                 .addComponent(lbltotalscore, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPlayagain, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnBacktomenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(btnBacktomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,28 +170,21 @@ public class Goodgame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPlayagainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayagainActionPerformed
-        // TODO add your handling code here:
-        if(caseforpanel.length()>5){
-            dispose();
-            new Nerdle().setVisible(true);
-        }
-        else{
-            dispose();
-            try {
-                new Wordle().setVisible(true);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Gameover.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
-    }//GEN-LAST:event_btnPlayagainActionPerformed
-
     private void btnBacktomenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBacktomenuActionPerformed
         // TODO add your handling code here:
         dispose();
         new ENTRYPAGE().setVisible(true);
     }//GEN-LAST:event_btnBacktomenuActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -171,8 +195,11 @@ public class Goodgame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBacktomenu;
-    private javax.swing.JButton btnPlayagain;
-    private javax.swing.JLabel lblExcellent;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblscore;
     private javax.swing.JLabel lbltotalscore;
     private javax.swing.JPanel mainpnl;
