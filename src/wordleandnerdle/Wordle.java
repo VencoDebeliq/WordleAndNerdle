@@ -25,10 +25,8 @@ public class Wordle extends WordleMethods {
     public Wordle() throws FileNotFoundException {
         super();
         setTitle("Wordle");
-        initComponents(); 
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 300);
+        initComponents();
+        setLocationRelativeTo(null);
         init_arr();
         lblwordlist.setVisible(false);
          

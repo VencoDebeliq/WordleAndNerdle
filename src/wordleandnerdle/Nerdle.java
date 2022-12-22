@@ -4,9 +4,7 @@
  */
 package wordleandnerdle;
 
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -31,9 +29,7 @@ public class Nerdle extends NerdleMethods {
         super();
         setTitle("Nerdle");
         initComponents();
-        Toolkit obj=getToolkit();
-        Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 100);
+        setLocationRelativeTo(null);
         init_arr();
         lblequation.setVisible(false);
     }
@@ -91,6 +87,8 @@ public class Nerdle extends NerdleMethods {
         lblequation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 

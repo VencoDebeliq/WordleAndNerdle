@@ -1,10 +1,5 @@
 package wordleandnerdle;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /*
