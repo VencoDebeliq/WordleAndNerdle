@@ -4,12 +4,18 @@
  */
 package wordleandnerdle;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 /**
  *
@@ -20,9 +26,15 @@ public class ReadandWrite {
 
     
     
-     private FileWriter fw;
-     private FileReader fr;
+    private FileWriter fw;
+    private FileReader fr;
     private static int points;
+    private  static HashMap<String,Integer> ranker=new HashMap<>();
+    ArrayList<String> merger=new ArrayList<>();
+    private static int position;
+    private static String finalranking;
+    
+    
     
     public void setPoints(int points){
         this.points=points;
@@ -30,16 +42,32 @@ public class ReadandWrite {
     public static int getPoints(){
         return points;
     }
+    
+    
+    public void setPos(int pos){
+        this.position=pos;
+    }
+    public static int getPos(){
+        return position;
+    }
+    
+    public void setStandings(String table){
+        this.finalranking=table;
+    }
+       
+    public static String getStandings(){
+        return finalranking;
+    }
            
      
-    public boolean checkIfMatchRegister(Registersystem obj){
+    public boolean checkIfMatchRegister(){
         boolean check=true;
         try {
             fr=new FileReader("Secretinfo.txt");
             BufferedReader bf=new BufferedReader(fr);
             String str; 
             
-            String username=obj.getUsername();
+            String username=Registersystem.getUsername();
             
             while((str=bf.readLine())!=null){
                 ArrayList<Character>merger=new ArrayList<>();
@@ -51,7 +79,7 @@ public class ReadandWrite {
                    }
                    else if(str.charAt(i)!='\t'){
                        merger.add(str.charAt(i));
-                       System.out.println(str.charAt(i));
+                       //System.out.println(str.charAt(i));
                    }
                     
                 }
@@ -60,7 +88,7 @@ public class ReadandWrite {
                   finalusername+=merger.get(i);
                     
                 }
-                System.out.println(finalusername);
+                //System.out.println(finalusername);
                 if(username.equals(finalusername))
                 {
                     check=false;
@@ -83,12 +111,12 @@ public class ReadandWrite {
             BufferedReader bf=new BufferedReader(fr);
             String str;   
             while((str=bf.readLine())!=null){
-                if(str.equals(obj.getUsername()+"\t"+obj.getPassword()))
+                if(str.equals(Registersystem.getUsername()+"\t"+Registersystem.getPassword()))
                 {
                     check=false;
                   
                 }
-                //System.out.println(str+"    "+obj.getUsername()+"\t"+obj.getPassword());
+                
             }
         } 
         catch (IOException e) {
@@ -102,11 +130,11 @@ public class ReadandWrite {
         try {
           
             fw = new FileWriter("Secretinfo.txt",true);
-            fw.write(obj.getUsername()+"\t"+obj.getPassword() + "\n");
+            fw.write(Registersystem.getUsername()+"\t"+Registersystem.getPassword() + "\n");
             fw.close();
               
             fw = new FileWriter("Points.txt", true);
-            fw.write(obj.getUsername() + "\t" + "0"+ '\n');
+            fw.write(Registersystem.getUsername() + "\t" + "0"+ '\n');
             fw.close();
             
         }
@@ -118,65 +146,15 @@ public class ReadandWrite {
          
   
     }
-    
-   /* public  String getPoints() throws FileNotFoundException, IOException{
-       fr=new FileReader("Points.txt");
-       BufferedReader bf=new BufferedReader(fr);
-       String s;
-       String reversedpoints="";
-       while((s=bf.readLine())!=null){
-          String currentusername ="";
-          
-          for (int i = 0; i < s.length(); i++) {
-              if(s.charAt(i)!='\t'){
-                  currentusername+=s.charAt(i);
-              }
-              else{
-                  break;
-              } 
-          }
-          
-          if(currentusername.equals(Registersystem.getUsername())){
-              for (int i = s.length()-1; i >=0 ; --i) {
-                  if(s.charAt(i)!='\t'){
-                       reversedpoints+=s.charAt(i);
-                  }
-                  else{
-                      break;
-                  }
-                  
-              }
-          }
-          
-      }
-       bf.close();
-       String finalpoints="";
-        for (int i = reversedpoints.length()-1; i>=0; i++) {
-            finalpoints+=reversedpoints.charAt(i);
-            
-        }
-        
-       
-       return finalpoints;
-    }
-*/
-    
-    
-    
-    
-    
- 
-  
-   public void setnewPoints(int points) throws IOException{
-        
-       fr=new FileReader("Points.txt");
+    public void convertALtoHM(int points,String username) throws FileNotFoundException, IOException{
+        fr=new FileReader("Points.txt");
        BufferedReader bf=new BufferedReader(fr);
        String str;
-       ArrayList<String> merger=new ArrayList<>();
-       String reversedpoints ="";
+       
       while((str=bf.readLine())!=null){
           String currentusername ="";
-          
+          String reversedpoints="";
+          String finalpoint="";
           for (int i = 0; i < str.length(); i++) {
               if(str.charAt(i)!='\t'){
                   currentusername+=str.charAt(i);
@@ -186,7 +164,7 @@ public class ReadandWrite {
               } 
           }
           
-          if(currentusername.equals(Registersystem.getUsername())){
+          
               for (int i = str.length()-1; i >=0 ; --i) {
                   if(str.charAt(i)!='\t'){
                        reversedpoints+=str.charAt(i);
@@ -196,38 +174,76 @@ public class ReadandWrite {
                   }
                   
               }
+              
+              for (int i = reversedpoints.length()-1; i>=0; i--) {
+              finalpoint+=reversedpoints.charAt(i);
+              
           }
-          else{
-              merger.add(str+"\n");
-          }
-          
+            int convert=Integer.parseInt(finalpoint);
+                 ranker.put(currentusername, convert);
+             
       }
        bf.close();
-       String startingpointsgetter=reversedpoints;
-       String finalreversedpoints ="";
-       for (int i =startingpointsgetter.length()-1; i>=0;--i) {
-           finalreversedpoints+=startingpointsgetter.charAt(i);
-           
-       }
-       int finalpoints=Integer.parseInt(finalreversedpoints);
-       setPoints(finalpoints+points);
-       merger.add(Registersystem.getUsername()+"\t"+(finalpoints+points));
-      fw=new FileWriter("Points.txt");
        
-       for (int i = 0; i <merger.size(); i++) {
-           fw.write(merger.get(i));
-           
+        for (String i:ranker.keySet()) {
+           if(i.equals(Registersystem.getUsername()))
+           {
+               setPoints(ranker.get(i)+points);
+               ranker.replace(i,ranker.get(i)+points);
+           }
+        }
+        fw=new FileWriter("Points.txt");
+       for (String i:ranker.keySet()) {
+           fw.write(i+"\t"+ranker.get(i)+"\n");
        }
-      
        fw.close();
-   }
+       ranks(username);
    
+    }
     
-   
-   
+    public void ranks(String username){
     
-    
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : ranker.entrySet()) {
+            list.add(entry.getValue());
+        }
+        Collections.sort(list); 
+        for (int num : list) {
+            for (Map.Entry<String, Integer> entry : ranker.entrySet()) {
+                if (entry.getValue().equals(num)) {
+                    sortedMap.put(entry.getKey(), num);
+                }
+            }
+        }
+        //System.out.println(sortedMap);
+        ArrayList<String> table=new ArrayList<>();
+     int counter=sortedMap.size();           
+   for(String i :sortedMap.keySet()){
+        table.add(String.format("%d:%s -- %d\n",counter,i,sortedMap.get(i)));
+        if(i.equals(username)){
+            setPos(counter);
+        }
+        counter--; 
+        
+    }
+   String finaltable="";
+        for (int i =table.size()-1; i>=0; i--) {
+           
+            finaltable+=table.get(i);
+            
+        }
+        setStandings(finaltable);
+        
+        
+        
+      
 }
+}
+    
+    
+
+
  
 
 

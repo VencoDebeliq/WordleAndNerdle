@@ -5,8 +5,7 @@
 package wordleandnerdle;
 
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -232,7 +231,7 @@ public class REGISTER extends javax.swing.JFrame{
         
         ReadandWrite obj1=new ReadandWrite();
   
-        if(obj1.checkIfMatchRegister(obj)==false){
+        if(obj1.checkIfMatchRegister()==false){
             notlbl.setVisible(true);
             ActionListener taskperformer=new ActionListener() {
                 @Override

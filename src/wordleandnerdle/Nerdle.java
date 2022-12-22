@@ -375,7 +375,8 @@ public class Nerdle extends NerdleMethods {
            
             try {
                 ReadandWrite obj=new ReadandWrite();
-                obj.setnewPoints(GetInfofromPanels.getRow());
+                //obj.setnewPoints(GetInfofromPanels.getRow());
+                obj.convertALtoHM(GetInfofromPanels.getRow(),Registersystem.getUsername());
             } catch (IOException ex) {
                 Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
             }
