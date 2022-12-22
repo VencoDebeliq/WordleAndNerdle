@@ -234,7 +234,7 @@ public class LOGIN extends javax.swing.JFrame {
         if(obj1.checkIfexistingLogin(obj)==false){
        
             dispose();
-            new ENTRYPAGE().setVisible(true);
+            ENTRYPAGE.Run();
             
         }
         else{

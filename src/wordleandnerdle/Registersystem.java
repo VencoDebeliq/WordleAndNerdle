@@ -4,6 +4,8 @@
  */
 package wordleandnerdle;
 
+import wordleandnerdle.REGISTER;
+import java.util.regex.*;
 
 
 public class Registersystem extends REGISTER {
@@ -14,17 +16,20 @@ public class Registersystem extends REGISTER {
   
   
     
-    private boolean is_ok(String s)
+    private boolean username_checker(String s)
     {
-        for (int i = 0; i < s.length(); ++i)
-        {
-            if (s.charAt(i) == ' ') return false;
-        }
-        return true && s != null && s.length() != 0;
+        Pattern p = Pattern.compile("^[a-zA-Z][\\w]{0,9}");
+        return p.matcher(s).matches();
+    }
+    
+    private boolean password_checker(String s)
+    {
+        Pattern p = Pattern.compile("^[a-zA-Z0-9][\\w@#$!]{0,9}");
+        return p.matcher(s).matches();
     }
     
     public  void setUsername(String username){
-        if(is_ok(username)){
+        if(username_checker(username)){
             this.username=username;
         }
         else
@@ -37,7 +42,7 @@ public class Registersystem extends REGISTER {
         return username;
     }
     public void setPassword(String password){
-        if(is_ok(password)){
+        if(password_checker(password)){
             this.password=password;
         }
         else
@@ -60,7 +65,7 @@ public class Registersystem extends REGISTER {
     
     public Registersystem()
     {
-        this("_", "_");
+        this("a", "a");
     }
     
     

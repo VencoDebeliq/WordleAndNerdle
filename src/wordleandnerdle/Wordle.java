@@ -929,8 +929,6 @@ public class Wordle extends WordleMethods {
         }
         setJ(currj + 1);
         setI(0);
-
-      
     }//GEN-LAST:event_btnENTActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked

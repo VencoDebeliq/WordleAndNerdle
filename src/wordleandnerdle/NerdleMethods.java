@@ -18,7 +18,6 @@ public class NerdleMethods extends javax.swing.JFrame {
     protected javax.swing.JPanel[][] pnlarr = new javax.swing.JPanel[8][6];
     protected int curri;
     protected int currj;
-
     protected void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
@@ -219,7 +218,6 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
             paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
         }
-
     }
     
     private void paintBtn(char c, Color col)
