@@ -16,35 +16,24 @@ import java.util.logging.Logger;
 
 
 
-
 /**
  *
  * @author mac
  */
 public class WordleMethods extends javax.swing.JFrame{
    
-     protected javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
+    protected javax.swing.JPanel[][]  pnlarr = new javax.swing.JPanel[5][6];
     protected int curri; // index of current panel
     protected int currj; // index of current panel
     protected String word;
     private FileReader fr;
-    protected int counter;
     
-    protected void setCounter(int counter){
-        this.counter=counter;
-    }
     
-    protected int getCounter(){
-        return counter;
-    }
-    
-       protected void setJ(int currj) // setting currj variable
+    protected void setJ(int currj) // setting currj variable
     {
         if (currj < 0) return;
         if (currj < 6)
             this.currj = currj;
-        else
-            throw new RuntimeException("Out of bounds");
     }
     
        
@@ -56,36 +45,32 @@ public class WordleMethods extends javax.swing.JFrame{
     }
     
     protected WordleMethods() throws FileNotFoundException{
-        word=generateRandomword();
+        word=generate();
     }
     
-     public String generateRandomword() throws FileNotFoundException{
+    private String generate() throws FileNotFoundException{
         Random gen=new Random();
-         //int counter=0;
-         String randomword = null;
-         int countercheck=1;
+        String randomword = null;
+        int countercheck=1;
         try {
             fr=new FileReader("wordsfromwordle.txt");
-        BufferedReader bf=new BufferedReader(fr);
+            BufferedReader bf=new BufferedReader(fr);
             
-                    /*while(bf.readLine()!=null){
-                counter++;
-            }*/
             int randomline=gen.nextInt(496)+1;
-           while((bf.readLine())!=null){
+            while((bf.readLine())!=null){
                 countercheck++;
                 if(countercheck==randomline){
-                  
                     randomword=bf.readLine();
                 }
-                
             }
+            System.out.println(randomword);
         } catch (IOException ex) {
             Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return randomword;
+        return randomword;
     }
-      public boolean checkIfWordexists(){
+    
+    public boolean is_valid(){
         try {
             fr=new FileReader("wordsfromwordle.txt");
             BufferedReader bf=new BufferedReader(fr);
@@ -106,32 +91,32 @@ public class WordleMethods extends javax.swing.JFrame{
         return false;
         
     }
-      protected void paintPanels(String s){
-          boolean check=false;
-          boolean arrifperfmatch[]=new boolean[5];//for za perfect match
-              int countLetters[] = new int [26];
-          for (int i = 0; i <word.length() ; i++) {
-              pnlarr[i][currj].getComponent(0).setForeground(Color.white);
-               if (!(word.charAt(i) >= 'a' && word.charAt(i) <= 'z'))
+    
+    protected void paintPanels(String s){
+        boolean arrifperfmatch[]=new boolean[5];//for za perfect match
+        int countLetters[] = new int [26];
+        for (int i = 0; i <word.length() ; i++) {
+            pnlarr[i][currj].getComponent(0).setForeground(Color.white);
+            if (!(word.charAt(i) >= 'a' && word.charAt(i) <= 'z'))
             {
                 continue;
             }
-              countLetters[(word.charAt(i) - 'a')]++;
-              if(word.charAt(i)==s.charAt(i)){
-                  
-                  arrifperfmatch[i]=true;
-                  pnlarr[i][currj].setBackground(new Color(102, 255, 102));//zelen cvqt
-                  countLetters[word.charAt(i)-'a']--;
-              }
+            countLetters[(word.charAt(i) - 'a')]++;
+            if(word.charAt(i)==s.charAt(i)){
+
+                arrifperfmatch[i]=true;
+                pnlarr[i][currj].setBackground(new Color(102, 255, 102));//zelen cvqt
+                countLetters[word.charAt(i)-'a']--;
+            }
              
-          }
+        }
           
-           for (int i = 0; i < word.length(); ++i)
+        for (int i = 0; i < word.length(); ++i)
         {
             if (arrifperfmatch[i]==true) {
                 continue;
             }
-             if (!(word.charAt(i) >= 'a' && word.charAt(i) <= 'z'))
+            if (!(word.charAt(i) >= 'a' && word.charAt(i) <= 'z'))
             {
                 continue;
             }
@@ -146,10 +131,8 @@ public class WordleMethods extends javax.swing.JFrame{
                 countLetters[s.charAt(i) - 'a']--;
             }
         }
-           
-          
-           
-            for (int i = 0; i < s.length(); ++i)
+        
+        for (int i = 0; i < s.length(); ++i)
         {
             if (!arrifperfmatch[i]) continue;
             paintBtn(s.charAt(i), pnlarr[i][currj].getBackground());
@@ -162,10 +145,8 @@ public class WordleMethods extends javax.swing.JFrame{
         }
     }
     
-    
     private void paintBtn(char c, Color col)
     {
-        System.out.println("in paint btn");
         switch (c)
         {
             case 'a':
@@ -274,7 +255,8 @@ public class WordleMethods extends javax.swing.JFrame{
                 break;
         }
     }
-       private Color getBtnColor(char c)
+    
+    private Color getBtnColor(char c)
     {
         switch (c)
         {

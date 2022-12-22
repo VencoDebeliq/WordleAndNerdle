@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Wordle extends WordleMethods {
     
-   private final int dulzhina=5;
+   private final int dulzhina = 5;
    
     public Wordle() throws FileNotFoundException {
         super();
@@ -25,7 +25,7 @@ public class Wordle extends WordleMethods {
         initComponents(); 
         Toolkit obj=getToolkit();
         Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 300);
         init_arr();
         lblwordlist.setVisible(false);
          
@@ -39,7 +39,7 @@ public class Wordle extends WordleMethods {
         {
             for (int j = 0; j < m; ++j)
             {
-                pnlarr[i][j] = new javax.swing.JPanel();
+                pnlarr[i][j] = new MyPanel();
                 add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(55 + i * (51 + 20), 15 + j * (51 + 20), 51, 51);
             }
@@ -494,7 +494,6 @@ public class Wordle extends WordleMethods {
             add(pnlarr[curri][currj]);
             pnlarr[curri][currj].setBounds(55 + curri * (51 + 20), 15 + currj * (51 + 20), 51, 51);
         }
-// this is test !
     }//GEN-LAST:event_btnDELActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
@@ -766,25 +765,19 @@ public class Wordle extends WordleMethods {
         {
             for (int j = currj; j < 6; ++j)
             {
-            Graphics g = pnlarr[i][j].getGraphics();
-            pnlarr[i][j].setBackground(new MyPanel().getBackground());
+                pnlarr[i][j].repaint();
             }
-        } 
+        }
+        
         try{
-        if (pnlarr[curri][currj].getComponentCount() == 0) return;
+            if (pnlarr[curri][currj].getComponentCount() == 0) return;
         }
         catch(ArrayIndexOutOfBoundsException e){
-         }
-         Gameover.setCase(word);
-        if(checkIfWordexists()==true){
-            
-        paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));
-          
         }
          
-        else{
+        if(!is_valid()){
             lblwordlist.setVisible(true);
-             ActionListener taskperformer=new ActionListener() {
+            ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     lblwordlist.setVisible(false);
@@ -794,6 +787,7 @@ public class Wordle extends WordleMethods {
             new javax.swing.Timer(3000, taskperformer).start();
             return;
         }
+        paintPanels(GetInfofromPanels.getInput(pnlarr, currj, dulzhina));    
         
         if(GetInfofromPanels.solved(pnlarr, currj, 5)){
             
@@ -804,15 +798,12 @@ public class Wordle extends WordleMethods {
 
                 }
             };
-            new javax.swing.Timer(10, taskperformer).start();
-            
-         
+            new javax.swing.Timer(1500, taskperformer).start();
             new Goodgame().setVisible(true);
-
+            return;
         }
         else if (currj == 5)
         {
-            System.out.println("in else");
             ActionListener taskperformer=new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -820,18 +811,12 @@ public class Wordle extends WordleMethods {
 
                 }
             };
-            new javax.swing.Timer(1000, taskperformer).start();
-            
-         
+            new javax.swing.Timer(1500, taskperformer).start();
             new Gameover().setVisible(true);
+            return;
         }
         setJ(currj + 1);
-        setI(0);
-       
-         
-        
-        
-      
+        setI(0);    
     }//GEN-LAST:event_btnENTActionPerformed
     
     public static void Run() {

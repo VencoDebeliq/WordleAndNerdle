@@ -27,7 +27,7 @@ public class ENTRYPAGE extends javax.swing.JFrame {
         setResizable(false);
         Toolkit obj=getToolkit();
         Dimension size=obj.getScreenSize();
-        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight());
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight() + 100);
         String name = Registersystem.getUsername();
         lblplayer.setText(String.format("Hello, %s", name));
         
