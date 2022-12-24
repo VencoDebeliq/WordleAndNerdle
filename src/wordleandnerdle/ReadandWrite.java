@@ -218,27 +218,23 @@ public class ReadandWrite {
         }
         //System.out.println(sortedMap);
         ArrayList<String> table=new ArrayList<>();
-     int counter=sortedMap.size();           
-   for(String i :sortedMap.keySet()){
-        table.add(String.format("%d:%s -- %d\n",counter,i,sortedMap.get(i)));
-        if(i.equals(username)){
-            setPos(counter);
-        }
-        counter--; 
+        int counter=sortedMap.size();           
+        for(String i :sortedMap.keySet()){
+            table.add(String.format("%d:%s -- %d\n",counter,i,sortedMap.get(i)));
+            if(i.equals(username)){
+                setPos(counter);
+            }
+            counter--; 
         
-    }
-   String finaltable="";
+        }
+        String finaltable="";
         for (int i =table.size()-1; i>=0; i--) {
            
             finaltable+=table.get(i);
             
         }
         setStandings(finaltable);
-        
-        
-        
-      
-}
+    }
 }
     
     

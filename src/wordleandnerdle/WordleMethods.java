@@ -55,7 +55,7 @@ public class WordleMethods extends javax.swing.JFrame{
             fr=new FileReader("wordsfromwordle.txt");
             BufferedReader bf=new BufferedReader(fr);
             
-            int randomline=gen.nextInt(496)+1;
+            int randomline=gen.nextInt(2309)+1;
             while((bf.readLine())!=null){
                 countercheck++;
                 if(countercheck==randomline){
