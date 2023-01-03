@@ -44,7 +44,7 @@ public class Nerdle extends NerdleMethods {
             for (int j = 0; j < m; ++j)
             {
                 pnlarr[i][j] = new MyPanel();
-                add(pnlarr[i][j]);
+                jPanel2.add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(15 + i * (35 + 18), 100 + j * (35 + 18), 35, 35);
             }
         }

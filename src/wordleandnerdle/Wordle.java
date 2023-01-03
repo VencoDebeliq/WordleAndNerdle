@@ -41,7 +41,7 @@ public class Wordle extends WordleMethods {
             for (int j = 0; j < m; ++j)
             {
                 pnlarr[i][j] = new MyPanel();
-                add(pnlarr[i][j]);
+                jPanel3.add(pnlarr[i][j]);
                 pnlarr[i][j].setBounds(55 + i * (51 + 20), 115 + j * (51 + 20), 51, 51);
             }
         }
