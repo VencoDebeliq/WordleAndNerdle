@@ -19,11 +19,14 @@ public class NerdleMethods extends javax.swing.JFrame {
     protected int curri;
     protected int currj;
 
-    protected void setJ(int currj) // setting currj variable
+    protected void setJ(int currj) // setting getJ() variable
     {
         if (currj < 0) return;
         if (currj < 6)
             this.currj = currj;
+    }
+    protected int getJ(){
+        return currj;
     }
     
     protected void setI(int curri) // setting curri variable
@@ -32,7 +35,9 @@ public class NerdleMethods extends javax.swing.JFrame {
         if (curri < 8)
             this.curri = curri;  
     }
-    
+    protected int getI(){
+        return curri;
+    }
     protected NerdleMethods()
     {
         equation = generate();
@@ -138,7 +143,6 @@ public class NerdleMethods extends javax.swing.JFrame {
                 ans = "";
                 continue;
             }
-            if (ans.length() <= 6) System.out.println("Less than 6");
         }
         //System.out.println(ans);
         return ans;
@@ -157,7 +161,7 @@ public class NerdleMethods extends javax.swing.JFrame {
         int countNums[] = new int [10];
         for (int i = 0; i < equation.length(); ++i)
         {
-            pnlarr[i][currj].getComponent(0).setForeground(Color.white);
+            pnlarr[i][getJ()].getComponent(0).setForeground(Color.white);
             if (!is_number(equation.charAt(i) + ""))
             {
                 continue;
@@ -166,7 +170,7 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (eq.charAt(i) == equation.charAt(i))
             {
                 arrIsGreen[i] = true;
-                pnlarr[i][currj].setBackground(new Color(102, 255, 102)); // paints panel in color green
+                pnlarr[i][getJ()].setBackground(new Color(102, 255, 102)); // paints panel in color green
                 countNums[(equation.charAt(i) - '0')]--;
             }
         } // for za zeleni cifri
@@ -177,11 +181,11 @@ public class NerdleMethods extends javax.swing.JFrame {
             if (!is_number(eq.charAt(i) + "")) continue;
             if (countNums[(eq.charAt(i) - '0')] == 0)
             {
-                pnlarr[i][currj].setBackground(Color.gray);
+                pnlarr[i][getJ()].setBackground(Color.gray);
             }
             else
             {
-                pnlarr[i][currj].setBackground(new Color(102, 0, 153)); // paints panel in color purple
+                pnlarr[i][getJ()].setBackground(new Color(102, 0, 153)); // paints panel in color purple
                 countNums[eq.charAt(i) - '0']--;
             }
         } // for za lilavi i cherni cifri
@@ -197,27 +201,27 @@ public class NerdleMethods extends javax.swing.JFrame {
                     if (i == j)
                     {
                         arrIsGreen[i] = true;
-                        pnlarr[i][currj].setBackground(new Color(102, 255, 102)); // paints panel in color green
+                        pnlarr[i][getJ()].setBackground(new Color(102, 255, 102)); // paints panel in color green
                     }
                     else
                     {
-                        pnlarr[i][currj].setBackground(new Color(102, 0, 153)); // paints panel in color purple
+                        pnlarr[i][getJ()].setBackground(new Color(102, 0, 153)); // paints panel in color purple
                     }
                 }
             }
-            if (ok) pnlarr[i][currj].setBackground(Color.gray);
+            if (ok) pnlarr[i][getJ()].setBackground(Color.gray);
         } // for za znaci
         
         for (int i = 0; i < eq.length(); ++i)
         {
             if (!arrIsGreen[i]) continue;
-            paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
+            paintBtn(eq.charAt(i), pnlarr[i][getJ()].getBackground());
         }
         
         for (int i = 0; i < eq.length(); ++i)
         {
             if (getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(eq.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
-            paintBtn(eq.charAt(i), pnlarr[i][currj].getBackground());
+            paintBtn(eq.charAt(i), pnlarr[i][getJ()].getBackground());
         }
 
     }

@@ -396,28 +396,28 @@ public class Nerdle extends NerdleMethods {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("4");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("2");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
         try
         {
-            if (!is_valid(GetInfofromPanels.getInput(pnlarr, currj, dulzhina)))
+            if (!is_valid(GetInfofromPanels.getInput(pnlarr, getJ(), dulzhina)))
             {
                 lblequation.setVisible(true);
                 ActionListener taskperformer=new ActionListener() {
@@ -437,18 +437,18 @@ public class Nerdle extends NerdleMethods {
         }
         for (int i = 0; i < 8; ++i)
         {
-            for (int j = currj; j < 6; ++j)
+            for (int j = getJ(); j < 6; ++j)
             {
                 pnlarr[i][j].repaint();
             }
         }
-        if (pnlarr[curri][currj].getComponentCount() == 0) return; // checking if the panle has any components
+        if (pnlarr[getI()][getJ()].getComponentCount() == 0) return; // checking if the panle has any components
 
-        paintPanels(GetInfofromPanels.getInput(pnlarr, currj,dulzhina));
+        paintPanels(GetInfofromPanels.getInput(pnlarr, getJ(),dulzhina));
         
-        if (GetInfofromPanels.solved(pnlarr, currj, 8)){
+        if (GetInfofromPanels.solved(pnlarr, getJ(), 8)){
             GetInfofromPanels info=new GetInfofromPanels();
-            info.setRow(6-currj);
+            info.setRow(6-getJ());
            
             try {
                 ReadandWrite obj=new ReadandWrite();
@@ -472,7 +472,7 @@ public class Nerdle extends NerdleMethods {
             }
             return;
         }
-        else if (currj == 5)
+        else if (getJ() == 5)
         {
             Gameover.setANswer(equation);
             ActionListener taskperformer=new ActionListener() {
@@ -486,168 +486,168 @@ public class Nerdle extends NerdleMethods {
             new Gameover().setVisible(true);
             return;
         }
-        setJ(currj + 1);
+        setJ(getJ() + 1);
         setI(0);
     }//GEN-LAST:event_btnENTActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("1");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("3");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("5");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("6");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("7");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("8");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("9");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("0");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnPLUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPLUSActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("+");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btnPLUSActionPerformed
 
     private void btnMINUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMINUSActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("-");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btnMINUSActionPerformed
 
     private void btnMULTIPLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMULTIPLActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("*");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btnMULTIPLActionPerformed
 
     private void btnDIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDIVActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("/");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btnDIVActionPerformed
 
     private void btnEQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEQActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() != 0) return;
+        if (pnlarr[getI()][getJ()].getComponentCount() != 0) return;
         javax.swing.JLabel lbl = new javax.swing.JLabel();
-        pnlarr[curri][currj].add(lbl);
+        pnlarr[getI()][getJ()].add(lbl);
         lbl.setText("=");
         Font font = new Font("Arial", Font.BOLD, 27);
         lbl.setFont(font);
         lbl.setVisible(true);
-        setI(curri + 1);
+        setI(getI() + 1);
     }//GEN-LAST:event_btnEQActionPerformed
 
     private void btnDELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDELActionPerformed
-        if (pnlarr[curri][currj].getComponentCount() == 0)
+        if (pnlarr[getI()][getJ()].getComponentCount() == 0)
             try
             {
-                pnlarr[curri - 1][currj] = new MyPanel();
-                add(pnlarr[curri - 1][currj]);
-                pnlarr[curri - 1][currj].setBounds(15 + (curri - 1) * (35 + 18), 100 + currj * (35 + 18), 35, 35);
-                setI(curri - 1);
+                pnlarr[getI() - 1][getJ()] = new MyPanel();
+                add(pnlarr[getI() - 1][getJ()]);
+                pnlarr[getI() - 1][getJ()].setBounds(15 + (getI() - 1) * (35 + 18), 100 + getJ() * (35 + 18), 35, 35);
+                setI(getI() - 1);
             }
             catch (RuntimeException e){}
         else
         {
-            pnlarr[curri][currj] = new MyPanel();
-            add(pnlarr[curri][currj]);
-            pnlarr[curri][currj].setBounds(15 + curri * (35 + 18), 100 + currj * (35 + 18), 35, 35);
+            pnlarr[getI()][getJ()] = new MyPanel();
+            add(pnlarr[getI()][getJ()]);
+            pnlarr[getI()][getJ()].setBounds(15 + getI() * (35 + 18), 100 + getJ() * (35 + 18), 35, 35);
         }
     }//GEN-LAST:event_btnDELActionPerformed
 

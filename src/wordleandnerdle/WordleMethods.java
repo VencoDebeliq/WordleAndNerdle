@@ -34,6 +34,9 @@ public class WordleMethods extends javax.swing.JFrame{
         if (currj < 6)
             this.currj = currj;
     }
+    protected int getJ(){
+        return currj;
+    }
     
        
     protected void setI(int curri) // setting curri variable
@@ -41,6 +44,9 @@ public class WordleMethods extends javax.swing.JFrame{
         if (curri < 0) return ;
         if (curri < 5)
             this.curri = curri;  
+    }
+    protected int getI(){
+        return curri;
     }
     
     protected WordleMethods() throws FileNotFoundException{
@@ -95,7 +101,7 @@ public class WordleMethods extends javax.swing.JFrame{
         boolean arrifperfmatch[]=new boolean[5];//for za perfect match
         int countLetters[] = new int [26];
         for (int i = 0; i <word.length() ; i++) {
-            pnlarr[i][currj].getComponent(0).setForeground(Color.white);
+            pnlarr[i][getJ()].getComponent(0).setForeground(Color.white);
             if (!(word.charAt(i) >= 'a' && word.charAt(i) <= 'z'))
             {
                 continue;
@@ -104,7 +110,7 @@ public class WordleMethods extends javax.swing.JFrame{
             if(word.charAt(i)==s.charAt(i)){
 
                 arrifperfmatch[i]=true;
-                pnlarr[i][currj].setBackground(new Color(102, 255, 102));//zelen cvqt
+                pnlarr[i][getJ()].setBackground(new Color(102, 255, 102));//zelen cvqt
                 countLetters[word.charAt(i)-'a']--;
             }
              
@@ -122,11 +128,11 @@ public class WordleMethods extends javax.swing.JFrame{
             
             if (countLetters[(s.charAt(i) - 'a')] == 0)
             {
-                pnlarr[i][currj].setBackground(Color.gray);
+                pnlarr[i][getJ()].setBackground(Color.gray);
             }
             else
             {
-                pnlarr[i][currj].setBackground(new Color(102, 0, 153)); // lilav cvqt
+                pnlarr[i][getJ()].setBackground(new Color(102, 0, 153)); // lilav cvqt
                 countLetters[s.charAt(i) - 'a']--;
             }
         }
@@ -134,13 +140,13 @@ public class WordleMethods extends javax.swing.JFrame{
         for (int i = 0; i < s.length(); ++i)
         {
             if (!arrifperfmatch[i]) continue;
-            paintBtn(s.charAt(i), pnlarr[i][currj].getBackground());
+            paintBtn(s.charAt(i), pnlarr[i][getJ()].getBackground());
         }
         
         for (int i = 0; i < s.length(); ++i)
         {
             if (getBtnColor(s.charAt(i)).getRGB() == (new Color(102, 0, 153)).getRGB() || getBtnColor(s.charAt(i)).getRGB() == (new Color(102, 255, 102)).getRGB()) continue;
-            paintBtn(s.charAt(i), pnlarr[i][currj].getBackground());
+            paintBtn(s.charAt(i), pnlarr[i][getJ()].getBackground());
         }
     }
     
