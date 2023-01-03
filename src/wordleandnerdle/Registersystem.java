@@ -62,13 +62,18 @@ public class Registersystem extends REGISTER {
         
     }
     
-   
-    
     public Registersystem()
     {
         this("a", "a");
     }
     
-    
+    public Registersystem(Registersystem obj){
+        this(obj.getUsername(),obj.getPassword());
+    }
+    @Override
+    public String toString()
+    {
+           return String.format("%s \n %s ",getUsername(),getPassword()) ;
+    }
 }
 
