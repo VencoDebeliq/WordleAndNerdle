@@ -60,7 +60,7 @@ public class ReadandWrite {
     }
            
      
-    public boolean checkIfMatchRegister(){
+    public boolean checkIfMatchRegister() throws IOException{
         boolean check=true;
         try {
             fr=new FileReader("Secretinfo.txt");
@@ -97,8 +97,8 @@ public class ReadandWrite {
                 
             }
         } 
-        catch (IOException e) {
-            throw new RuntimeException(e);
+        catch (FileNotFoundException e) {
+            
         }
         
         return check;
@@ -140,7 +140,7 @@ public class ReadandWrite {
         }
              
         catch (IOException e) {
-            throw new RuntimeException(e);
+            
         }
          
          

@@ -843,14 +843,7 @@ public class Wordle extends WordleMethods {
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnENTActionPerformed
-        for (int i = 0; i < 5; ++i)
-        {
-            for (int j = getJ(); j < 6; ++j)
-            {
-                pnlarr[i][j].repaint();
-            }
-        }
-        
+       
         try{
             if (pnlarr[getI()][getJ()].getComponentCount() == 0) return;
         }

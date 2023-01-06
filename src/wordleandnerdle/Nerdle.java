@@ -435,13 +435,7 @@ public class Nerdle extends NerdleMethods {
         {
             
         }
-        for (int i = 0; i < 8; ++i)
-        {
-            for (int j = getJ(); j < 6; ++j)
-            {
-                pnlarr[i][j].repaint();
-            }
-        }
+       
         if (pnlarr[getI()][getJ()].getComponentCount() == 0) return; // checking if the panle has any components
 
         paintPanels(GetInfofromPanels.getInput(pnlarr, getJ(),dulzhina));

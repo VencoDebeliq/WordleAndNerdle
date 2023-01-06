@@ -1,1 +1,3 @@
+gogo	0
+gogo123	10
 gogo1	18

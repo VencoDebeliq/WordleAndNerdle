@@ -68,7 +68,7 @@ public class WordleMethods extends javax.swing.JFrame{
                     randomword=bf.readLine();
                 }
             }
-            System.out.println(randomword);
+            //System.out.println(randomword);
         } catch (IOException ex) {
             Logger.getLogger(Wordle.class.getName()).log(Level.SEVERE, null, ex);
         }

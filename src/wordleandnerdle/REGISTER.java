@@ -30,7 +30,8 @@ public class REGISTER extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         notlbl.setVisible(false);
         setTitle("REGISTRATION");
-        
+        expressionlbl.setVisible(false);
+        expressionlbl1.setVisible(false);
     }
 
     /**
@@ -54,6 +55,8 @@ public class REGISTER extends javax.swing.JFrame{
         lblregister1 = new javax.swing.JLabel();
         lblclose = new javax.swing.JLabel();
         lblgoback = new javax.swing.JLabel();
+        expressionlbl = new javax.swing.JLabel();
+        expressionlbl1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -152,6 +155,16 @@ public class REGISTER extends javax.swing.JFrame{
                     .addComponent(lblgoback, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        expressionlbl.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        expressionlbl.setForeground(new java.awt.Color(255, 51, 51));
+        expressionlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expressionlbl.setText("Your username must contain only letters and numbers and it must be maximum 10 symbols");
+
+        expressionlbl1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        expressionlbl1.setForeground(new java.awt.Color(255, 0, 0));
+        expressionlbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expressionlbl1.setText("Your password must me maximum 10 symbols");
+
         javax.swing.GroupLayout mainpnlLayout = new javax.swing.GroupLayout(mainpnl);
         mainpnl.setLayout(mainpnlLayout);
         mainpnlLayout.setHorizontalGroup(
@@ -171,6 +184,11 @@ public class REGISTER extends javax.swing.JFrame{
                             .addComponent(pswrdfldregister)))
                     .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(expressionlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainpnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(expressionlbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         mainpnlLayout.setVerticalGroup(
             mainpnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +206,11 @@ public class REGISTER extends javax.swing.JFrame{
                     .addComponent(pswrdfldregister, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnregisternow, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(expressionlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(expressionlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,22 +237,14 @@ public class REGISTER extends javax.swing.JFrame{
         }
         catch (RuntimeException Empty)
         {
-            System.err.println("Error Caught");
-            notlbl.setVisible(true);
-            ActionListener taskperformer=new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    notlbl.setVisible(false);
-
-                }
-            };
-            new javax.swing.Timer(delay, taskperformer).start();
-            
+        
+            expressionlbl.setVisible(true);
+            expressionlbl1.setVisible(true);
             return;
         }
         
         ReadandWrite obj1=new ReadandWrite();
-  
+       
         if(obj1.checkIfMatchRegister()==false){
             notlbl.setVisible(true);
             ActionListener taskperformer=new ActionListener() {
@@ -309,6 +323,8 @@ public class REGISTER extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnregisternow;
+    private javax.swing.JLabel expressionlbl;
+    private javax.swing.JLabel expressionlbl1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblclose;
     private javax.swing.JLabel lblgoback;

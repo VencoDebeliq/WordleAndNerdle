@@ -17,13 +17,13 @@ public class Registersystem extends REGISTER {
   
   
     
-    private boolean username_checker(String s)
+    public boolean username_checker(String s)
     {
         Pattern p = Pattern.compile("^[a-zA-Z][\\w]{0,9}");
         return p.matcher(s).matches();
     }
     
-    private boolean password_checker(String s)
+    public boolean password_checker(String s)
     {
         Pattern p = Pattern.compile("^[a-zA-Z0-9][\\w@#$!]{0,9}");
         return p.matcher(s).matches();
